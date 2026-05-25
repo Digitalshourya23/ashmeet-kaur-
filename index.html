@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3-Day Tarot Workshop — Learn, Earn & Transform | Occult Academy</title>
+<meta name="description" content="Learn Tarot in 3 days. Start earning ₹500–₹5,000 per reading from home. Join 10,000+ students trained by Ashmeet. Only ₹99. Seats filling fast.">
+
+<!-- Facebook Pixel — replace YOUR_PIXEL_ID -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','YOUR_PIXEL_ID');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+
+<!-- Preconnect to critical CDNs -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://static.wixstatic.com">
+<link rel="dns-prefetch" href="https://checkout.razorpay.com">
+<link rel="dns-prefetch" href="https://img.youtube.com">
+
+<!-- Non-blocking font load (faster than render-blocking link) -->
+<link rel="preload" as="style"
+  href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@400;600;700;800&display=swap"
+  onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@400;600;700;800&display=swap">
+</noscript>
+
+<!-- Razorpay loaded on-demand (not blocking page paint) -->
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#05000f;
+  --bg2:#0a0019;
+  --purple:#6c1fff;
+  --purple2:#3d0099;
+  --gold:#f5c518;
+  --gold2:#ffad00;
+  --orange:#ff5e1a;
+  --orange2:#e04400;
+  --green:#16a34a;
+  --green2:#22c55e;
+  --white:#fff;
+  --off:#f8f4ff;
+  --gray:#6b7280;
+  --dark:#111827;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ─── UTILS ─── */
+.gold{color:var(--gold)}
+.orange{color:var(--orange)}
+.green-c{color:var(--green2)}
+.center{text-align:center}
+.mx-auto{max-width:700px;margin:0 auto}
+.sec{padding:64px 20px}
+.sec-light{background:#fff;color:var(--dark)}
+
+/* ─── LIVE TICKER ─── */
+.ticker{background:linear-gradient(90deg,var(--purple2),var(--purple));padding:9px 0;overflow:hidden;white-space:nowrap;font-size:13px;font-weight:600;letter-spacing:.3px}
+.ticker-inner{display:inline-block;animation:ticker 28s linear infinite}
+@keyframes ticker{0%{transform:translateX(100vw)}100%{transform:translateX(-100%)}}
+.ticker span{margin:0 30px;opacity:.9}
+.ticker span b{color:var(--gold-light,#ffe066)}
+
+/* ─── STICKY NAV ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(5,0,15,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(245,197,24,.2);padding:10px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.nav-logo{font-family:'Cinzel',serif;color:var(--gold);font-size:15px;font-weight:700;flex-shrink:0}
+.nav-mid{display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.6);flex-shrink:0}
+.nav-mid b{color:var(--gold);font-family:'Cinzel',serif;font-size:16px}
+.nav-cta{background:linear-gradient(135deg,var(--orange),var(--orange2));color:#fff;border:none;padding:9px 18px;border-radius:25px;font-weight:800;font-size:13px;cursor:pointer;text-decoration:none;white-space:nowrap;animation:navpulse 2.5s infinite}
+@keyframes navpulse{0%,100%{box-shadow:0 0 0 0 rgba(255,94,26,.5)}50%{box-shadow:0 0 0 9px rgba(255,94,26,0)}}
+@media(max-width:480px){.nav-mid{display:none}}
+
+/* ─── ANNOUNCEMENT BAR ─── */
+.ann{margin-top:55px;background:linear-gradient(90deg,#1a0050,#2d0080,#1a0050);padding:9px 16px;text-align:center;font-size:13px;font-weight:700;border-bottom:1px solid rgba(245,197,24,.25)}
+.ann span{color:var(--gold)}
+
+/* ─── HERO ─── */
+.hero{padding:40px 20px 56px;background:radial-gradient(ellipse at 50% 0%,rgba(108,31,255,.3) 0%,transparent 70%),var(--bg);text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f5c518' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto}
+
+.pattern-interrupt{font-size:clamp(13px,3vw,15px);font-weight:700;color:rgba(255,255,255,.5);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px}
+.pattern-interrupt span{color:var(--orange);animation:blink 1.4s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+
+.hero h1{font-family:'Cinzel',serif;font-size:clamp(28px,6vw,52px);font-weight:900;line-height:1.15;margin-bottom:8px}
+.hero h1 .line1{display:block;color:var(--white)}
+.hero h1 .line2{display:block;color:var(--gold);font-size:clamp(22px,5vw,44px)}
+
+.hero-tagline{font-size:clamp(14px,2.8vw,18px);color:rgba(255,255,255,.75);line-height:1.65;margin:16px 0 24px;max-width:560px;margin-left:auto;margin-right:auto}
+
+/* STAT ROW */
+.hero-stats{display:flex;justify-content:center;gap:0;margin-bottom:28px;border:1px solid rgba(245,197,24,.2);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.03)}
+.hstat{flex:1;padding:14px 8px;text-align:center;border-right:1px solid rgba(245,197,24,.15)}
+.hstat:last-child{border-right:none}
+.hstat-n{font-family:'Cinzel',serif;font-size:clamp(16px,3.5vw,22px);font-weight:900;color:var(--gold);display:block}
+.hstat-l{font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.8px}
+
+/* COUNTDOWN */
+.cdown-wrap{background:rgba(245,197,24,.07);border:1px solid rgba(245,197,24,.3);border-radius:14px;padding:14px 20px;margin-bottom:24px}
+.cdown-lbl{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
+.cdown{display:flex;justify-content:center;align-items:center;gap:10px}
+.cu{text-align:center}
+.cn{font-family:'Cinzel',serif;font-size:36px;font-weight:900;color:var(--gold);display:block;line-height:1;min-width:48px}
+.cl{font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px}
+.cs{font-size:30px;color:var(--gold);font-weight:900;margin-bottom:12px}
+
+/* HERO BENEFITS */
+.hero-ben{list-style:none;margin:0 0 28px;display:flex;flex-direction:column;gap:9px;text-align:left}
+.hero-ben li{display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06);padding:11px 14px;border-radius:10px;font-size:14px;color:rgba(255,255,255,.88);border-left:3px solid var(--gold)}
+.hero-ben li b{color:var(--gold)}
+.bi{font-size:20px;flex-shrink:0;margin-top:1px}
+
+/* HERO CTA */
+.hero-cta{display:inline-block;width:100%;max-width:440px;background:linear-gradient(135deg,var(--orange),var(--orange2));color:#fff;border:none;padding:19px 32px;border-radius:50px;font-size:17px;font-weight:800;cursor:pointer;text-decoration:none;font-family:'Poppins',sans-serif;box-shadow:0 8px 32px rgba(255,94,26,.5);transition:transform .2s,box-shadow .2s;margin-bottom:10px}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 14px 42px rgba(255,94,26,.65)}
+.hero-note{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:24px}
+
+/* SEATS LEFT */
+.seats-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);color:#fca5a5;padding:8px 16px;border-radius:25px;font-size:12px;font-weight:700}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:#ef4444;animation:pdot .9s ease-in-out infinite}
+@keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
+
+/* ─── TRUST BAR ─── */
+.trust{background:linear-gradient(135deg,var(--gold),var(--gold2));padding:16px 20px}
+.trust-inner{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;max-width:860px;margin:0 auto}
+.ti{display:flex;align-items:center;gap:7px;color:var(--bg);font-weight:700;font-size:12px}
+.tic{font-size:17px}
+
+/* ─── INCOME SECTION ─── */
+.income-sec{background:linear-gradient(135deg,#0a001e,#0d0028);padding:64px 20px;position:relative;overflow:hidden}
+.income-sec::before{content:'₹';position:absolute;right:-20px;top:-20px;font-size:300px;color:rgba(245,197,24,.04);font-family:'Cinzel',serif;font-weight:900;line-height:1}
+.income-inner{max-width:860px;margin:0 auto}
+.income-tag{display:inline-block;background:rgba(22,163,74,.15);border:1px solid rgba(34,197,94,.4);color:var(--green2);padding:5px 16px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
+.income-h{font-family:'Cinzel',serif;font-size:clamp(22px,4.5vw,38px);font-weight:900;line-height:1.25;margin-bottom:12px}
+.income-sub{font-size:15px;color:rgba(255,255,255,.65);line-height:1.7;max-width:580px;margin-bottom:36px}
+.income-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:36px}
+.income-card{background:rgba(255,255,255,.04);border:1px solid rgba(34,197,94,.2);border-radius:16px;padding:24px;text-align:center}
+.income-card .amount{font-family:'Cinzel',serif;font-size:clamp(28px,5vw,40px);font-weight:900;color:var(--green2);display:block;line-height:1;margin-bottom:6px}
+.income-card .ic-lbl{font-size:13px;color:rgba(255,255,255,.6);line-height:1.5}
+.income-proof{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2);border-radius:14px;padding:20px 24px}
+.income-proof p{font-size:14px;color:rgba(255,255,255,.75);line-height:1.7}
+.income-proof p b{color:var(--green2)}
+
+/* ─── PROBLEM ─── */
+.problem-sec{background:#fff;color:var(--dark);padding:64px 20px;text-align:center}
+.sec-tag{display:inline-block;padding:5px 16px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}
+.sec-tag.purple{background:rgba(108,31,255,.1);color:var(--purple)}
+.sec-tag.orange{background:rgba(255,94,26,.1);color:var(--orange)}
+.sec-tag.gold-t{background:rgba(245,197,24,.12);color:#92670a}
+.sec-tag.green-t{background:rgba(22,163,74,.1);color:var(--green)}
+.sec-h{font-family:'Cinzel',serif;font-size:clamp(22px,4vw,34px);font-weight:700;line-height:1.3;margin-bottom:12px;color:var(--dark)}
+.sec-sub{font-size:15px;color:var(--gray);max-width:560px;margin:0 auto 36px;line-height:1.72}
+.prob-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;max-width:880px;margin:0 auto 36px}
+.prob-card{background:var(--off);border-radius:14px;padding:20px 18px;display:flex;align-items:flex-start;gap:12px;text-align:left;border-left:3px solid #fca5a5}
+.prob-card .pi{font-size:26px;flex-shrink:0}
+.prob-card p{font-size:13px;color:var(--dark);line-height:1.6;font-weight:500}
+.bridge{font-size:18px;font-weight:700;color:var(--dark);max-width:580px;margin:0 auto;line-height:1.5}
+.bridge span{color:var(--orange)}
+
+/* ─── SOLUTION BRIDGE ─── */
+.solution-sec{background:radial-gradient(ellipse at 50% 0%,rgba(108,31,255,.25) 0%,var(--bg2) 70%);padding:60px 20px;text-align:center}
+.solution-card{max-width:660px;margin:0 auto;background:rgba(255,255,255,.04);border:1px solid rgba(245,197,24,.2);border-radius:20px;padding:36px 28px}
+.solution-card h2{font-family:'Cinzel',serif;font-size:clamp(20px,4vw,30px);font-weight:900;color:var(--gold);margin-bottom:16px;line-height:1.3}
+.solution-card p{font-size:15px;color:rgba(255,255,255,.75);line-height:1.75;margin-bottom:20px}
+.sol-points{list-style:none;text-align:left;display:flex;flex-direction:column;gap:10px}
+.sol-points li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,.85);padding:10px 14px;background:rgba(255,255,255,.04);border-radius:10px;border-left:3px solid var(--gold)}
+
+/* ─── DAYS ─── */
+.days-sec{background:var(--bg);padding:64px 20px}
+.days-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;max-width:960px;margin:0 auto}
+.day-card{background:linear-gradient(145deg,#100028,#0d001f);border:1px solid rgba(245,197,24,.15);border-radius:18px;padding:28px 22px;position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
+.day-card:hover{border-color:rgba(245,197,24,.4);transform:translateY(-4px)}
+.day-card::after{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(245,197,24,.08),transparent 70%);border-radius:50%}
+.day-pill{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--bg);padding:4px 14px;border-radius:20px;font-size:11px;font-weight:800;margin-bottom:14px;text-transform:uppercase;letter-spacing:.8px}
+.day-card h3{font-family:'Cinzel',serif;font-size:17px;color:var(--gold);margin-bottom:14px}
+.day-card ul{list-style:none}
+.day-card ul li{font-size:13px;padding:7px 0 7px 22px;position:relative;color:rgba(255,255,255,.78);border-bottom:1px solid rgba(255,255,255,.06)}
+.day-card ul li:last-child{border-bottom:none}
+.day-card ul li::before{content:'✦';position:absolute;left:0;color:var(--gold);font-size:10px;top:9px}
+
+/* ─── BEFORE AFTER ─── */
+.ba-sec{background:#fff;color:var(--dark);padding:64px 20px}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:800px;margin:0 auto;border-radius:18px;overflow:hidden;border:2px solid #e5e7eb}
+.ba-col{padding:28px 22px}
+.ba-col.before{background:#fef2f2}
+.ba-col.after{background:#f0fdf4}
+.ba-head{font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.ba-col.before .ba-head{color:#ef4444}
+.ba-col.after .ba-head{color:var(--green)}
+.ba-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ba-list li{font-size:13px;line-height:1.5;display:flex;align-items:flex-start;gap:8px}
+.ba-col.before .ba-list li{color:#6b7280}
+.ba-col.after .ba-list li{color:#166534;font-weight:500}
+.ba-div{display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--gold);font-size:28px;padding:0 4px;align-self:stretch}
+@media(max-width:540px){.ba-grid{grid-template-columns:1fr}.ba-div{padding:12px;font-size:20px}}
+
+/* ─── INSTRUCTOR ─── */
+.instr-sec{background:radial-gradient(ellipse at 30% 50%,rgba(108,31,255,.2) 0%,var(--bg) 60%);padding:64px 20px}
+.instr-inner{max-width:840px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:32px;text-align:center}
+@media(min-width:640px){.instr-inner{flex-direction:row;text-align:left}}
+.instr-img{width:200px;height:200px;border-radius:50%;flex-shrink:0;border:4px solid var(--gold);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:80px;background:linear-gradient(135deg,var(--purple2),#1a0050)}
+.instr-img img{width:100%;height:100%;object-fit:cover}
+.instr-name{font-family:'Cinzel',serif;font-size:28px;color:var(--gold);margin-bottom:4px}
+.instr-role{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:16px}
+.instr-body p{font-size:14px;color:rgba(255,255,255,.78);line-height:1.75;margin-bottom:18px}
+.creds{display:flex;flex-wrap:wrap;gap:9px}
+.cred{background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.3);color:var(--gold);padding:5px 12px;border-radius:20px;font-size:12px;font-weight:500}
+
+/* ─── TESTIMONIALS ─── */
+.testi-sec{background:var(--off);color:var(--dark);padding:64px 20px}
+
+/* WhatsApp-style */
+.wa-testi{max-width:480px;margin:0 auto 40px;background:#0b1437;border-radius:16px;overflow:hidden}
+.wa-header{background:#075e54;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.wa-avatar{width:36px;height:36px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.wa-hinfo{color:#fff;font-size:13px;font-weight:600}
+.wa-hinfo span{display:block;font-size:11px;font-weight:400;opacity:.7}
+.wa-body{padding:16px}
+.wa-msg{background:#1f2c34;border-radius:10px 10px 10px 0;padding:12px 14px;margin-bottom:12px;max-width:90%;font-size:13px;color:rgba(255,255,255,.88);line-height:1.6}
+.wa-msg.sent{background:#005c4b;border-radius:10px 10px 0 10px;margin-left:auto}
+.wa-time{font-size:10px;color:rgba(255,255,255,.35);margin-top:4px;text-align:right}
+
+/* card testimonials */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;max-width:1020px;margin:0 auto}
+.tc{background:#fff;border-radius:16px;padding:24px;border-top:3px solid var(--gold);position:relative;box-shadow:0 3px 16px rgba(0,0,0,.06);overflow:hidden}
+.tc::before{content:'"';font-size:90px;color:var(--gold);opacity:.1;position:absolute;top:2px;right:10px;font-family:'Cinzel',serif;line-height:1}
+.stars{color:var(--gold);font-size:14px;margin-bottom:8px}
+.tc-text{font-size:13px;color:var(--gray);line-height:1.68;margin-bottom:14px}
+.tc-auth{display:flex;align-items:center;gap:10px}
+.av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--purple2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;flex-shrink:0}
+.av-name{font-weight:700;font-size:13px;color:var(--dark)}
+.av-loc{font-size:12px;color:var(--gray)}
+.earn-badge{display:inline-block;background:#dcfce7;color:#166534;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-top:6px}
+
+/* ─── WHO IS THIS FOR ─── */
+.who-sec{background:var(--bg2);padding:64px 20px;text-align:center}
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;max-width:840px;margin:0 auto}
+.who-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:22px 16px;transition:border-color .2s,background .2s}
+.who-card:hover{border-color:rgba(245,197,24,.3);background:rgba(255,255,255,.06)}
+.we{font-size:32px;margin-bottom:10px}
+.who-card p{font-size:13px;color:rgba(255,255,255,.72);font-weight:500;line-height:1.5}
+
+/* ─── BONUSES ─── */
+.bonus-sec{background:#fff;color:var(--dark);padding:64px 20px}
+.bonus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:18px;max-width:940px;margin:0 auto}
+.bonus-card{background:var(--off);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:9px;border:1px solid rgba(108,31,255,.1);transition:box-shadow .2s,border-color .2s}
+.bonus-card:hover{border-color:rgba(108,31,255,.3);box-shadow:0 6px 24px rgba(108,31,255,.08)}
+.bn{font-size:11px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:1.5px}
+.bt{font-size:15px;font-weight:700;color:var(--dark)}
+.bd{font-size:13px;color:var(--gray);line-height:1.6;flex:1}
+.bv{font-size:13px;color:var(--gray);margin-top:auto}
+.bv strong{color:var(--green);font-size:15px}
+.bv del{color:#aaa}
+
+/* ─── SEATS LIVE ─── */
+.seats-sec{background:linear-gradient(135deg,#0a0019,#06000f);padding:40px 20px;text-align:center;border-top:1px solid rgba(245,197,24,.1);border-bottom:1px solid rgba(245,197,24,.1)}
+.seats-inner{max-width:500px;margin:0 auto}
+.seats-h{font-family:'Cinzel',serif;font-size:20px;color:var(--white);margin-bottom:6px}
+.seats-sub{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:18px}
+.progress-wrap{background:rgba(255,255,255,.08);border-radius:50px;height:22px;overflow:hidden;margin-bottom:10px;position:relative}
+.progress-bar{background:linear-gradient(90deg,var(--green),#4ade80);height:100%;border-radius:50px;width:87%;transition:width 1s ease}
+.progress-text{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:700;color:#fff}
+.seats-count{font-size:13px;color:rgba(255,255,255,.55)}
+.seats-count b{color:#f87171;font-size:15px}
+
+/* ─── PRICING / FORM ─── */
+.pricing-sec{background:radial-gradient(ellipse at 50% 0%,rgba(108,31,255,.25) 0%,var(--bg) 70%);padding:64px 20px;text-align:center}
+.pricing-card{max-width:560px;margin:0 auto;background:rgba(255,255,255,.04);border:1px solid rgba(245,197,24,.3);border-radius:24px;padding:40px 28px}
+.pricing-card>h2{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(19px,3.5vw,26px);margin-bottom:6px}
+.pricing-lbl{color:rgba(255,255,255,.45);font-size:13px;margin-bottom:26px}
+.val-stack{margin-bottom:20px}
+.vr{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:13px;color:rgba(255,255,255,.7)}
+.vr:last-child{border-bottom:none}
+.vr-p{text-decoration:line-through;color:rgba(255,255,255,.3);font-size:12px}
+.val-total{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:rgba(245,197,24,.08);border-radius:10px;margin-bottom:20px;font-weight:700;font-size:14px}
+.vt-p{font-size:16px;text-decoration:line-through;color:rgba(255,255,255,.3)}
+.price-box{margin-bottom:24px}
+.ypay{color:rgba(255,255,255,.45);font-size:13px;margin-bottom:4px}
+.big-p{font-family:'Cinzel',serif;font-size:clamp(52px,10vw,72px);font-weight:900;color:var(--gold);line-height:1}
+.disc{display:inline-block;background:var(--green);color:#fff;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:800;margin-left:8px;vertical-align:middle}
+.p-note{color:rgba(255,255,255,.35);font-size:12px;margin-top:5px}
+
+/* FORM */
+.reg-form{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.fi{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:14px 16px;color:#fff;font-size:15px;font-family:'Poppins',sans-serif;transition:border-color .2s;width:100%}
+.fi:focus{outline:none;border-color:var(--gold);background:rgba(255,255,255,.1)}
+.fi::placeholder{color:rgba(255,255,255,.35)}
+.pay-btn{background:linear-gradient(135deg,var(--green2),var(--green));color:#fff;border:none;padding:19px;border-radius:14px;font-size:17px;font-weight:800;cursor:pointer;width:100%;font-family:'Poppins',sans-serif;box-shadow:0 8px 28px rgba(22,163,74,.45);transition:transform .2s,box-shadow .2s}
+.pay-btn:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(22,163,74,.6)}
+.pay-btn:disabled{opacity:.65;cursor:not-allowed;transform:none}
+.pay-secure{display:flex;align-items:center;justify-content:center;gap:7px;color:rgba(255,255,255,.4);font-size:12px;margin-top:12px}
+.objection-strip{margin-top:18px;display:flex;flex-direction:column;gap:7px}
+.obj{font-size:12px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:6px}
+
+/* ─── FAQ ─── */
+.faq-sec{background:#fff;color:var(--dark);padding:64px 20px}
+.faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:11px}
+.faq-item{border:1px solid #e5e7eb;border-radius:13px;overflow:hidden}
+.faq-q{padding:18px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:14px;color:var(--dark);background:#fff;border:none;width:100%;text-align:left;font-family:'Poppins',sans-serif;transition:background .2s;gap:12px}
+.faq-q:hover{background:var(--off)}
+.faq-ico{font-size:22px;color:var(--purple);transition:transform .3s;flex-shrink:0}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a.open{max-height:320px}
+.faq-ai{padding:2px 20px 18px;font-size:14px;color:var(--gray);line-height:1.75}
+.faq-item.active .faq-ico{transform:rotate(45deg)}
+
+/* ─── FINAL CTA ─── */
+.final-sec{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);padding:72px 20px;text-align:center;position:relative;overflow:hidden}
+.final-sec::before{content:'🔮';position:absolute;font-size:400px;opacity:.03;top:50%;left:50%;transform:translate(-50%,-50%)}
+.final-h{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,42px);font-weight:900;line-height:1.25;margin-bottom:16px}
+.final-p{font-size:15px;color:rgba(255,255,255,.6);max-width:520px;margin:0 auto 32px;line-height:1.7}
+.final-btn{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--bg);padding:20px 52px;border-radius:50px;font-size:17px;font-weight:800;text-decoration:none;box-shadow:0 8px 32px rgba(245,197,24,.45);transition:transform .2s,box-shadow .2s;font-family:'Poppins',sans-serif;border:none;cursor:pointer}
+.final-btn:hover{transform:translateY(-2px);box-shadow:0 14px 44px rgba(245,197,24,.6)}
+.final-note{color:rgba(255,255,255,.25);font-size:12px;margin-top:18px}
+
+/* ─── FOOTER ─── */
+.footer{background:#030008;padding:24px 20px;text-align:center;border-top:1px solid rgba(255,255,255,.05)}
+.footer p{color:rgba(255,255,255,.28);font-size:12px;margin-bottom:10px;line-height:1.6}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:14px}
+.footer-links a{color:rgba(255,255,255,.3);text-decoration:none;font-size:12px;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.disclaimer{font-size:10px;color:rgba(255,255,255,.18);max-width:700px;margin:0 auto}
+
+/* ─── MOBILE STICKY PAY BAR ─── */
+.mob-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:997;background:linear-gradient(135deg,#16a34a,#22c55e);padding:0;box-shadow:0 -4px 20px rgba(22,163,74,.5)}
+.mob-bar-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;gap:10px}
+.mob-bar-left{display:flex;flex-direction:column}
+.mob-bar-seats{font-size:10px;color:rgba(255,255,255,.75);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.mob-bar-price{font-family:'Cinzel',serif;font-size:22px;font-weight:900;color:#fff;line-height:1}
+.mob-bar-del{font-size:11px;color:rgba(255,255,255,.6);text-decoration:line-through}
+.mob-bar-btn{background:#fff;color:#16a34a;border:none;padding:13px 22px;border-radius:50px;font-size:14px;font-weight:800;cursor:pointer;white-space:nowrap;font-family:'Poppins',sans-serif;flex-shrink:0;animation:navpulse 2.5s infinite}
+@media(max-width:768px){
+  .mob-bar{display:block}
+  body{padding-bottom:72px}
+  .wa-float{bottom:84px}
+}
+
+/* ─── WA FLOAT ─── */
+.wa-float{position:fixed;bottom:22px;right:22px;background:#25d366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 4px 22px rgba(37,211,102,.5);cursor:pointer;z-index:998;text-decoration:none;transition:transform .2s}
+.wa-float:hover{transform:scale(1.12)}
+
+/* ─── EXIT POPUP ─── */
+.ep-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10000;display:none;align-items:center;justify-content:center;padding:20px}
+.ep-overlay.show{display:flex}
+.ep-box{background:linear-gradient(145deg,#0d0028,#1a0050);border:1px solid rgba(245,197,24,.35);border-radius:20px;padding:36px 28px;max-width:440px;width:100%;text-align:center;position:relative}
+.ep-close{position:absolute;top:12px;right:16px;background:none;border:none;color:rgba(255,255,255,.4);font-size:22px;cursor:pointer;line-height:1}
+.ep-emoji{font-size:48px;margin-bottom:12px}
+.ep-h{font-family:'Cinzel',serif;font-size:22px;color:var(--gold);margin-bottom:10px;line-height:1.3}
+.ep-p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.65;margin-bottom:20px}
+.ep-btn{background:linear-gradient(135deg,var(--orange),var(--orange2));color:#fff;border:none;padding:16px 32px;border-radius:50px;font-size:15px;font-weight:800;cursor:pointer;width:100%;font-family:'Poppins',sans-serif;margin-bottom:10px}
+.ep-skip{background:none;border:none;color:rgba(255,255,255,.3);font-size:12px;cursor:pointer}
+
+/* ─── FADE IN ─── */
+.fi-anim{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.fi-anim.vis{opacity:1;transform:translateY(0)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:480px){
+  .cn{font-size:30px}
+  .big-p{font-size:52px}
+  .trust-inner{flex-direction:column;align-items:flex-start;padding-left:12px;gap:10px}
+  .hero-stats{border-radius:10px}
+  .pricing-card{padding:28px 18px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ EXIT INTENT POPUP ══ -->
+<div class="ep-overlay" id="exitPopup">
+  <div class="ep-box">
+    <button class="ep-close" onclick="closeExit()">✕</button>
+    <div class="ep-emoji">🔮</div>
+    <h2 class="ep-h">Wait — Are You Sure You Want to Leave?</h2>
+    <p class="ep-p">This ₹99 offer disappears when you close this page. Over <b style="color:var(--gold)">10,000 students</b> have already transformed their lives through Tarot. Don't let doubt steal your destiny.</p>
+    <button class="ep-btn" onclick="closeExit();document.getElementById('register').scrollIntoView({behavior:'smooth'})">
+      🚀 Okay, I'll Join — Take Me Back!
+    </button>
+    <button class="ep-skip" onclick="closeExit()">No thanks, I'll miss this opportunity</button>
+  </div>
+</div>
+
+<!-- ══ LIVE TICKER ══ -->
+<div class="ticker">
+  <div class="ticker-inner" id="tickerInner"></div>
+</div>
+
+<!-- ══ STICKY NAV ══ -->
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="https://static.wixstatic.com/media/d4eb53_e594f275456842238ab9dd6b081a3927~mv2.png/v1/fill/w_120,h_120,al_c,q_95,enc_avif/Logo.png" alt="Occult Academy" style="height:32px;width:auto;vertical-align:middle;margin-right:8px;">
+    <span>Occult Academy</span>
+  </div>
+  <div class="nav-mid">
+    <span>Offer ends in &nbsp;</span>
+    <b id="nh">23</b><span>:</span><b id="nm">59</b><span>:</span><b id="ns">59</b>
+  </div>
+  <a href="#register" class="nav-cta">Join @ ₹99 →</a>
+</nav>
+
+<!-- ══ ANNOUNCEMENT ══ -->
+<div class="ann">
+  🔥 <span>BATCH FILLING FAST</span> — Only <span>13 seats left</span> at ₹99 (Was ₹999) &nbsp;·&nbsp; 💬 <span>23 people registered in the last 24 hours</span>
+</div>
+
+<!-- ══════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="pattern-interrupt">⚡ <span>STOP</span> scrolling for just 60 seconds ⚡</div>
+
+    <h1>
+      <span class="line1">This Is Your Sign to Finally</span>
+      <span class="line2">Learn Tarot &amp; Earn from Home 🔮</span>
+    </h1>
+
+    <p class="hero-tagline">
+      Go from <b style="color:#f87171">complete beginner</b> to <b style="color:var(--gold)">confident Tarot reader</b> in just 3 days —<br>
+      and start earning <b style="color:var(--green2)">₹500–₹5,000 per reading</b> from the comfort of your home.
+    </p>
+
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-n">10K+</span><span class="hstat-l">Clients</span></div>
+      <div class="hstat"><span class="hstat-n">3,000+</span><span class="hstat-l">Students</span></div>
+      <div class="hstat"><span class="hstat-n">800+</span><span class="hstat-l">Pro Readers</span></div>
+      <div class="hstat"><span class="hstat-n">⭐ 4.9</span><span class="hstat-l">Rating</span></div>
+    </div>
+
+    <ul class="hero-ben">
+      <li><span class="bi">🎯</span><span><b>3-Day Live Workshop</b> — Real practice, live Q&amp;A, instant feedback from Ashmeet</span></li>
+      <li><span class="bi">💰</span><span><b>Built-in Side Income Strategy</b> — Learn to charge ₹500–₹5,000 per reading &amp; get your first 5 clients</span></li>
+      <li><span class="bi">🎁</span><span><b>₹18,500+ in FREE Bonuses</b> — Cheat sheet, income guide, audio meditation &amp; lifetime community</span></li>
+      <li><span class="bi">📱</span><span><b>Lifetime Recording Access</b> — Miss a session? Rewatch anytime, forever</span></li>
+    </ul>
+
+    <div class="cdown-wrap">
+      <div class="cdown-lbl">⚡ ₹99 price expires in</div>
+      <div class="cdown">
+        <div class="cu"><span class="cn" id="h1">23</span><span class="cl">Hours</span></div>
+        <span class="cs">:</span>
+        <div class="cu"><span class="cn" id="m1">59</span><span class="cl">Mins</span></div>
+        <span class="cs">:</span>
+        <div class="cu"><span class="cn" id="s1">59</span><span class="cl">Secs</span></div>
+      </div>
+    </div>
+
+    <a href="#register" class="hero-cta">🚀 Yes! Reserve My Seat for ₹99 →</a>
+    <p class="hero-note">🔒 Secure Razorpay payment · Instant confirmation · No hidden charges</p>
+
+    <div class="seats-badge">
+      <span class="pulse-dot"></span>
+      <span>Only <b>13 seats left</b> at this price — batch closes soon</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ TRUST BAR ══ -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="ti"><span class="tic">✅</span> 100% Live &amp; Interactive</div>
+    <div class="ti"><span class="tic">🔒</span> Secure Razorpay Payment</div>
+    <div class="ti"><span class="tic">🎓</span> Certificate Included</div>
+    <div class="ti"><span class="tic">📱</span> Lifetime Recording Access</div>
+    <div class="ti"><span class="tic">💬</span> WhatsApp Community</div>
+    <div class="ti"><span class="tic">↩️</span> 24-hr Money Back</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     INCOME OPPORTUNITY
+════════════════════════════════════════ -->
+<section class="income-sec">
+  <div class="income-inner fi-anim">
+    <div class="income-tag">💰 Side Income Opportunity</div>
+    <h2 class="income-h">
+      Tarot Readers in India Are Earning<br>
+      <span style="color:var(--green2)">₹15,000–₹80,000 Per Month</span><br>
+      <span style="color:rgba(255,255,255,.6);font-size:.75em;font-family:'Poppins',sans-serif;font-weight:400">Working Part-Time from Home</span>
+    </h2>
+    <p class="income-sub">
+      You don't need a degree. You don't need a big investment. You don't even need years of experience.<br>
+      All you need is <b style="color:var(--gold)">3 days</b>, a deck of cards, and the right teacher.
+    </p>
+
+    <div class="income-grid">
+      <div class="income-card">
+        <span class="amount">₹500–₹1,500</span>
+        <span class="ic-lbl">Per basic Tarot reading<br>(30 min session)</span>
+      </div>
+      <div class="income-card">
+        <span class="amount">₹2,000–₹5,000</span>
+        <span class="ic-lbl">Per in-depth life &amp; career<br>reading (60 min)</span>
+      </div>
+      <div class="income-card">
+        <span class="amount">₹15K–₹80K</span>
+        <span class="ic-lbl">Monthly income possible<br>working just 2–4 hrs/day</span>
+      </div>
+    </div>
+
+    <div class="income-proof">
+      <p>
+        💡 <b>Think about this:</b> Your current job pays you once a month for 9 hours a day, 5 days a week.
+        A Tarot practice pays you <b>every single time someone needs guidance</b> — mornings, evenings, weekends.
+        You set the hours. You set the price. You are your own boss.
+        <br><br>
+        <b style="color:var(--green2)">This is not a get-rich-quick scheme.</b> This is a real, growing spiritual service economy in India —
+        and the students who join now are the ones building their clientele while others are still "thinking about it."
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PROBLEM AGITATION
+════════════════════════════════════════ -->
+<section class="problem-sec">
+  <div class="sec-tag orange">Be Honest with Yourself</div>
+  <h2 class="sec-h">Have You Been Saying Any of This?</h2>
+  <p class="sec-sub">If even one of these thoughts has crossed your mind, you are exactly who this workshop was built for:</p>
+
+  <div class="prob-grid fi-anim">
+    <div class="prob-card">
+      <span class="pi">😔</span>
+      <p><b>"I'm so curious about Tarot but I don't know where to start. Every resource I find is confusing."</b></p>
+    </div>
+    <div class="prob-card">
+      <span class="pi">😤</span>
+      <p><b>"I've watched 50 YouTube videos and I'm still lost. I can't remember what any of the cards mean."</b></p>
+    </div>
+    <div class="prob-card">
+      <span class="pi">💸</span>
+      <p><b>"I want to earn from home but every 'side income' idea feels fake, risky, or needs huge investment."</b></p>
+    </div>
+    <div class="prob-card">
+      <span class="pi">😰</span>
+      <p><b>"I'm scared I'm not 'spiritual enough' or don't have the gift to read Tarot for other people."</b></p>
+    </div>
+    <div class="prob-card">
+      <span class="pi">🤷</span>
+      <p><b>"I feel stuck in my daily routine — job/home/repeat — and I want something meaningful that's mine."</b></p>
+    </div>
+    <div class="prob-card">
+      <span class="pi">⏰</span>
+      <p><b>"I've been saying 'I'll start next month' for the last 6 months. Nothing has changed."</b></p>
+    </div>
+  </div>
+
+  <p class="bridge">
+    Here's the truth: <span>none of this is your fault.</span> You just never had the right guide, the right structure, and the right community — until now.
+  </p>
+</section>
+
+<!-- ══════════════════════════════════════
+     SOLUTION BRIDGE
+════════════════════════════════════════ -->
+<section class="solution-sec">
+  <div class="solution-card fi-anim">
+    <h2>What If 3 Days Could Change Everything?</h2>
+    <p>
+      Imagine sitting down this weekend, opening your Tarot deck with <b style="color:var(--gold)">actual confidence</b>,
+      pulling cards for someone who needs guidance — and realising you <i>get it</i>.
+      The symbols speak to you. The story unfolds. You feel the energy.<br><br>
+      Then imagine getting paid ₹500. Then ₹1,000. Then having a waiting list of clients.
+      That's not a fantasy — that's what 3,000+ of Ashmeet's students have lived.
+    </p>
+    <ul class="sol-points">
+      <li>🌙 <span>No years of study. No expensive courses. Just 3 focused days with a master teacher.</span></li>
+      <li>💰 <span>A built-in income model — you'll know exactly how to charge &amp; find clients by Day 3.</span></li>
+      <li>👥 <span>A community that supports your practice long after the workshop ends.</span></li>
+      <li>✅ <span>Zero experience required. Your intuition is already there — we just unlock it.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     3 DAYS BREAKDOWN
+════════════════════════════════════════ -->
+<section class="sec" style="background:var(--bg)">
+  <div class="center" style="margin-bottom:36px">
+    <div class="sec-tag gold-t">What's Inside</div>
+    <h2 class="sec-h" style="color:var(--white)">Your 3-Day Transformation Journey</h2>
+    <p class="sec-sub" style="color:rgba(255,255,255,.6)">Every session is live, hands-on, and designed so you can actually DO readings — not just know theory</p>
+  </div>
+  <div class="days-grid fi-anim">
+    <div class="day-card">
+      <div class="day-pill">Day 1 · Foundation</div>
+      <h3>Unlock the World of Tarot</h3>
+      <ul>
+        <li>All 78 cards — Major &amp; Minor Arcana demystified</li>
+        <li>How to cleanse, shuffle &amp; bond with your deck</li>
+        <li>The secret language of symbols, colours &amp; numbers</li>
+        <li>Intuition activation guided meditation</li>
+        <li>Your first LIVE reading practice in the group</li>
+      </ul>
+    </div>
+    <div class="day-card">
+      <div class="day-pill">Day 2 · Reading</div>
+      <h3>Read with Clarity &amp; Confidence</h3>
+      <ul>
+        <li>Love, career, health &amp; life path readings</li>
+        <li>The 5 most powerful Tarot spreads explained</li>
+        <li>Reading for yourself vs reading for others</li>
+        <li>Yes/No technique + timing in Tarot</li>
+        <li>Live group reading session with real feedback</li>
+      </ul>
+    </div>
+    <div class="day-card">
+      <div class="day-pill">Day 3 · Mastery + Money</div>
+      <h3>Master the Cards &amp; Start Earning</h3>
+      <ul>
+        <li>Advanced card combinations &amp; storytelling</li>
+        <li>Minor Arcana deep dive — all 4 suits mastered</li>
+        <li><b style="color:var(--gold)">How to price your readings &amp; find paying clients</b></li>
+        <li><b style="color:var(--gold)">Setting up your Tarot practice on Instagram/WhatsApp</b></li>
+        <li>Q&amp;A + Certificate of Completion 🎓</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     BEFORE / AFTER
+════════════════════════════════════════ -->
+<section class="ba-sec sec-light">
+  <div class="center" style="margin-bottom:32px">
+    <div class="sec-tag purple">The Transformation</div>
+    <h2 class="sec-h">Your Life — Before vs After Tarot</h2>
+  </div>
+  <div class="ba-grid fi-anim">
+    <div class="ba-col before">
+      <div class="ba-head">❌ Before</div>
+      <ul class="ba-list">
+        <li>❌ <span>Curious about Tarot but no idea where to start</span></li>
+        <li>❌ <span>One income source, financially anxious</span></li>
+        <li>❌ <span>Watching others live purposeful lives online</span></li>
+        <li>❌ <span>Feeling stuck, bored, unfulfilled daily</span></li>
+        <li>❌ <span>Scattered knowledge from random YouTube videos</span></li>
+        <li>❌ <span>Helping no one, earning nothing from your gift</span></li>
+      </ul>
+    </div>
+    <div class="ba-div">→</div>
+    <div class="ba-col after">
+      <div class="ba-head">✅ After 3 Days</div>
+      <ul class="ba-list">
+        <li>✅ <span>Confident reader who can do real readings</span></li>
+        <li>✅ <span>Side income: ₹10K–₹50K/month from Tarot</span></li>
+        <li>✅ <span>Helping others with clarity, healing &amp; guidance</span></li>
+        <li>✅ <span>Purposeful practice you're genuinely proud of</span></li>
+        <li>✅ <span>Structured knowledge from a Master Tarot teacher</span></li>
+        <li>✅ <span>Paying clients, community &amp; your own brand</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     WHO IS THIS FOR
+════════════════════════════════════════ -->
+<section class="who-sec sec">
+  <div class="sec-tag" style="background:rgba(245,197,24,.1);color:var(--gold)">This Workshop Is For You If…</div>
+  <h2 class="sec-h" style="color:var(--white);margin-bottom:10px">No Experience. No Degree. Just Curiosity.</h2>
+  <p class="sec-sub" style="color:rgba(255,255,255,.55);margin-bottom:28px">We welcome every single person who feels even a tiny pull towards Tarot</p>
+  <div class="who-grid fi-anim">
+    <div class="who-card"><div class="we">🏠</div><p>Homemakers who want meaningful income without leaving home</p></div>
+    <div class="who-card"><div class="we">👩‍💼</div><p>Working women building a side income in spiritual services</p></div>
+    <div class="who-card"><div class="we">🎓</div><p>Students &amp; beginners completely new to Tarot or spirituality</p></div>
+    <div class="who-card"><div class="we">💆</div><p>People seeking clarity, self-healing &amp; emotional guidance</p></div>
+    <div class="who-card"><div class="we">🔮</div><p>Spiritual seekers wanting to deepen their intuitive practice</p></div>
+    <div class="who-card"><div class="we">💼</div><p>Professionals wanting freedom from the 9-to-5 grind</p></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     INSTRUCTOR
+════════════════════════════════════════ -->
+<section class="instr-sec">
+  <div class="instr-inner fi-anim">
+    <div class="instr-img">
+      <img src="https://static.wixstatic.com/media/e6630d_4bf28f7d9e1d46dda298451f6d00080f~mv2.jpeg/v1/fill/w_500,h_700,al_c,q_90,enc_avif/ashmeet.jpeg" alt="Ashmeet — Founder Occult Academy" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentElement.innerHTML='🌙';">
+    </div>
+    <div class="instr-body">
+      <div class="instr-name">Ashmeet</div>
+      <div class="instr-role">Founder, Occult Academy · Master Tarot Reader &amp; Educator</div>
+      <p>
+        Ashmeet walked away from a demanding corporate career after becoming a mother — and never looked back.
+        Today she is one of India's most trusted Tarot educators, having trained over
+        <b style="color:var(--gold)">10,000+ clients</b> in the transformative power of Tarot.
+      </p>
+      <p>
+        Her 3-day workshop has created <b style="color:var(--gold)">3,000+ confident readers</b> and
+        launched the practices of over <b style="color:var(--gold)">800 professional Tarot readers</b>
+        who now earn real income from their spiritual gift. Her teaching is warm, structured, practical — and it works.
+      </p>
+      <div class="creds">
+        <span class="cred">🎓 10,000+ Clients</span>
+        <span class="cred">🌟 3,000+ Students</span>
+        <span class="cred">✨ 800+ Pro Readers Created</span>
+        <span class="cred">🔮 Master Tarot Reader</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════ -->
+<section class="testi-sec sec">
+  <div class="center" style="margin-bottom:32px">
+    <div class="sec-tag purple">Real Students · Real Results</div>
+    <h2 class="sec-h">They Were Exactly Where You Are Now</h2>
+    <p class="sec-sub">Scared. Skeptical. Curious. Then they said yes — and everything changed.</p>
+  </div>
+
+  <!-- WhatsApp-style testimonial -->
+  <div class="wa-testi fi-anim" style="margin-bottom:40px">
+    <div class="wa-header">
+      <div class="wa-avatar">🔮</div>
+      <div class="wa-hinfo">Occult Academy Students
+        <span>Group · 3,000+ members</span>
+      </div>
+    </div>
+    <div class="wa-body">
+      <div class="wa-msg">
+        Ashmeet didi I can't believe it — I got my FIRST PAID CLIENT 3 days after the workshop! She paid me ₹700 for a 30-min reading and is coming back next week 😭🙏
+        <div class="wa-time">Anjali S., Pune · Yesterday 9:14 AM ✓✓</div>
+      </div>
+      <div class="wa-msg sent">
+        Same here! Started with 2 clients last month and now I have 11 regulars. Earning around ₹14,000 this month from readings alone 🥹
+        <div class="wa-time">Roohi M., Mumbai · Yesterday 9:21 AM ✓✓</div>
+      </div>
+      <div class="wa-msg">
+        Honestly I was SO scared before joining. Thought I'd waste ₹99. This is the best money I ever spent. I understand Tarot completely now 🔮
+        <div class="wa-time">Priya K., Delhi · Today 8:03 AM ✓✓</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testi-grid fi-anim">
+    <div class="tc">
+      <div class="stars">★★★★★</div>
+      <p class="tc-text">"I had zero knowledge about Tarot before this. By the end of Day 2, I was doing readings for my family and they were stunned by the accuracy. Ashmeet explains every card with such clarity and warmth — I felt like I'd known this language my whole life."</p>
+      <div class="tc-auth">
+        <div class="av">P</div>
+        <div>
+          <div class="av-name">Priya Sharma</div>
+          <div class="av-loc">Delhi · Homemaker</div>
+          <div class="earn-badge">💰 Earning ₹8,000/month from Tarot</div>
+        </div>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="stars">★★★★★</div>
+      <p class="tc-text">"I was skeptical paying even ₹99 — I thought it'd be generic content. I was WRONG. The depth of knowledge in 3 days blew my mind. I now charge ₹1,200 per reading and have 9 regular clients. This workshop paid for itself 100x over."</p>
+      <div class="tc-auth">
+        <div class="av">R</div>
+        <div>
+          <div class="av-name">Roohi Malhotra</div>
+          <div class="av-loc">Mumbai · IT Professional</div>
+          <div class="earn-badge">💰 Side income: ₹14,000/month</div>
+        </div>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="stars">★★★★★</div>
+      <p class="tc-text">"I'm a working mom — I barely had time. But the sessions were structured so perfectly that I kept up with everything. I now do Tarot readings on Saturday mornings and earn ₹10,000–₹15,000/month extra. It's changed my confidence completely."</p>
+      <div class="tc-auth">
+        <div class="av">A</div>
+        <div>
+          <div class="av-name">Anjali Singh</div>
+          <div class="av-loc">Pune · Working Mom</div>
+          <div class="earn-badge">💰 ₹12,000+ extra per month</div>
+        </div>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="stars">★★★★★</div>
+      <p class="tc-text">"I've been drawn to spirituality for years but always felt like an outsider. After Day 1 I cried — not because it was hard, but because I finally understood my own intuition. Ashmeet has a gift for making you believe in yourself."</p>
+      <div class="tc-auth">
+        <div class="av">S</div>
+        <div>
+          <div class="av-name">Sunita Reddy</div>
+          <div class="av-loc">Hyderabad · Teacher</div>
+          <div class="earn-badge">✨ Now reading for 15 regular clients</div>
+        </div>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="stars">★★★★★</div>
+      <p class="tc-text">"The Day 3 session on monetising was alone worth 10x the ₹99. I learned how to price, how to market on Instagram, and how to find clients. Within 2 weeks I had 3 paying clients. I'm so grateful I didn't overthink and just joined."</p>
+      <div class="tc-auth">
+        <div class="av">N</div>
+        <div>
+          <div class="av-name">Neha Kapoor</div>
+          <div class="av-loc">Bangalore · Designer</div>
+          <div class="earn-badge">💰 First 3 clients within 2 weeks</div>
+        </div>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="stars">★★★★★</div>
+      <p class="tc-text">"The WhatsApp community after the course is everything. I still post my readings there and get feedback. Rewatched the recordings 3 times. I went from 'what is Tarot?' to having a fully booked weekend schedule in under a month."</p>
+      <div class="tc-auth">
+        <div class="av">K</div>
+        <div>
+          <div class="av-name">Kavita Jain</div>
+          <div class="av-loc">Jaipur · Entrepreneur</div>
+          <div class="earn-badge">✨ Fully booked weekends</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     VIDEO SECTION
+════════════════════════════════════════ -->
+<section style="background:#05000f;padding:64px 20px;text-align:center">
+  <div class="sec-tag" style="background:rgba(245,197,24,.1);color:var(--gold)">See It for Yourself 🎥</div>
+  <h2 class="sec-h" style="color:#fff;margin-bottom:10px">Watch Ashmeet Teach — Before You Decide</h2>
+  <p class="sec-sub" style="color:rgba(255,255,255,.55);margin-bottom:36px">Get a feel for her teaching style, warmth, and depth — before spending even ₹99</p>
+
+  <div style="max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px" class="fi-anim">
+
+    <!-- VIDEO 1 — click to play; replace VIDEO_ID_1 with real YouTube ID -->
+    <div class="yt-wrap" onclick="loadYT(this,'VIDEO_ID_1')"
+      style="cursor:pointer;border-radius:16px;overflow:hidden;border:1px solid rgba(245,197,24,.2);background:#0a0019">
+      <div style="position:relative;padding-bottom:56.25%;height:0;background:#0d001f">
+        <img src="https://img.youtube.com/vi/VIDEO_ID_1/hqdefault.jpg" alt="Tarot intro video" loading="lazy" decoding="async"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+          <div style="width:64px;height:64px;background:rgba(255,94,26,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 20px rgba(255,94,26,.5)">▶</div>
+        </div>
+      </div>
+      <div style="padding:14px 16px;background:#0d001f">
+        <p style="color:var(--gold);font-weight:700;font-size:14px;margin-bottom:4px">🔮 What is Tarot &amp; Who Is It For?</p>
+        <p style="color:rgba(255,255,255,.55);font-size:12px">Watch Ashmeet explain Tarot in the simplest way possible</p>
+      </div>
+    </div>
+
+    <!-- VIDEO 2 — click to play; replace VIDEO_ID_2 with real YouTube ID -->
+    <div class="yt-wrap" onclick="loadYT(this,'VIDEO_ID_2')"
+      style="cursor:pointer;border-radius:16px;overflow:hidden;border:1px solid rgba(245,197,24,.2);background:#0a0019">
+      <div style="position:relative;padding-bottom:56.25%;height:0;background:#0d001f">
+        <img src="https://img.youtube.com/vi/VIDEO_ID_2/hqdefault.jpg" alt="Student earnings video" loading="lazy" decoding="async"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+          <div style="width:64px;height:64px;background:rgba(255,94,26,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 20px rgba(255,94,26,.5)">▶</div>
+        </div>
+      </div>
+      <div style="padding:14px 16px;background:#0d001f">
+        <p style="color:var(--gold);font-weight:700;font-size:14px;margin-bottom:4px">💰 How Students Are Earning from Tarot</p>
+        <p style="color:rgba(255,255,255,.55);font-size:12px">Real student stories — from beginner to earning</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Placeholder shown when no VIDEO_ID set -->
+  <div id="videoNote" style="margin-top:24px;background:rgba(245,197,24,.06);border:1px dashed rgba(245,197,24,.3);border-radius:12px;padding:16px 20px;max-width:500px;margin-left:auto;margin-right:auto;display:none">
+    <p style="color:rgba(255,255,255,.5);font-size:13px">📌 <b style="color:var(--gold)">For client:</b> Share your YouTube video links with Shourya — he'll replace VIDEO_ID_1 &amp; VIDEO_ID_2 above with your actual videos</p>
+  </div>
+
+  <!-- Real photo from occultaccademy.com -->
+  <div style="margin-top:48px">
+    <div class="sec-tag" style="background:rgba(245,197,24,.1);color:var(--gold);margin-bottom:20px">📸 From Our Students</div>
+    <div style="max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px" class="fi-anim">
+      <div style="border-radius:16px;overflow:hidden;border:2px solid rgba(245,197,24,.2);position:relative">
+        <img src="https://static.wixstatic.com/media/e6630d_bd9b2ba7ede743d0b798365115d0c410f000.jpg/v1/fill/w_600,h_800,al_c,q_90,enc_avif/testimonial.jpg"
+          alt="Student testimonial" loading="lazy" decoding="async" style="width:100%;height:300px;object-fit:cover;display:block">
+        <div style="background:linear-gradient(0deg,rgba(5,0,15,.95) 0%,transparent 100%);padding:16px;position:absolute;bottom:0;left:0;right:0">
+          <p style="color:var(--gold);font-weight:700;font-size:13px">⭐⭐⭐⭐⭐ Real student result</p>
+          <p style="color:rgba(255,255,255,.8);font-size:12px;margin-top:4px">Shared directly from our WhatsApp community</p>
+        </div>
+      </div>
+      <div style="border-radius:16px;overflow:hidden;border:2px solid rgba(245,197,24,.2);background:linear-gradient(135deg,#0d001f,#1a0050);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;text-align:center;min-height:300px">
+        <div style="font-size:48px;margin-bottom:16px">🔮</div>
+        <p style="font-family:'Cinzel',serif;color:var(--gold);font-size:18px;font-weight:700;margin-bottom:10px">3,000+ Students</p>
+        <p style="color:rgba(255,255,255,.65);font-size:13px;line-height:1.6">Have already transformed their lives through Ashmeet's Tarot training — and earned real income doing what they love.</p>
+        <a href="#register" style="margin-top:20px;background:linear-gradient(135deg,#ff5e1a,#e04400);color:#fff;padding:12px 24px;border-radius:25px;font-size:13px;font-weight:700;text-decoration:none;display:inline-block">Join Them → ₹99</a>
+      </div>
+      <div style="border-radius:16px;overflow:hidden;border:2px solid rgba(245,197,24,.2);position:relative">
+        <img src="https://static.wixstatic.com/media/e6630d_4bf28f7d9e1d46dda298451f6d00080f~mv2.jpeg/v1/fill/w_600,h_800,al_c,q_90,enc_avif/ashmeet2.jpeg"
+          alt="Ashmeet teaching Tarot" style="width:100%;height:300px;object-fit:cover;display:block"
+          onerror="this.parentElement.style.display='none'">
+        <div style="background:linear-gradient(0deg,rgba(5,0,15,.95) 0%,transparent 100%);padding:16px;position:absolute;bottom:0;left:0;right:0">
+          <p style="color:var(--gold);font-weight:700;font-size:13px">🎓 Ashmeet in action</p>
+          <p style="color:rgba(255,255,255,.8);font-size:12px;margin-top:4px">Live workshop session — interactive, warm &amp; practical</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     BONUSES
+════════════════════════════════════════ -->
+<section class="bonus-sec sec">
+  <div class="center" style="margin-bottom:36px">
+    <div class="sec-tag green-t">Free Bonuses 🎁</div>
+    <h2 class="sec-h">Register Today &amp; Get ₹12,000+ Bonuses</h2>
+    <p class="sec-sub" style="color:var(--orange);font-weight:700">Absolutely FREE — included with your ₹99 workshop</p>
+  </div>
+  <div class="bonus-grid fi-anim">
+    <div class="bonus-card">
+      <div class="bn">Bonus #1</div>
+      <div class="bt">🃏 78-Card Tarot Quick Reference Guide</div>
+      <div class="bd">Every card's meaning, keywords, reversed interpretation, and which spreads to use — all in one beautifully designed printable PDF. Your go-to cheat sheet for every reading.</div>
+      <div class="bv">Value: <strong>₹3,500</strong> · <del>₹3,500</del> → <strong style="color:var(--orange)">FREE</strong></div>
+    </div>
+    <div class="bonus-card">
+      <div class="bn">Bonus #2</div>
+      <div class="bt">📖 Tarot Side Income Starter Kit</div>
+      <div class="bd">How to price your readings, write your first client bio, set up Instagram as a Tarot reader, handle DMs, and get your first 5 paying clients — a step-by-step playbook.</div>
+      <div class="bv">Value: <strong>₹4,500</strong> · <del>₹4,500</del> → <strong style="color:var(--orange)">FREE</strong></div>
+    </div>
+    <div class="bonus-card">
+      <div class="bn">Bonus #3</div>
+      <div class="bt">🧘 Intuition Activation Guided Audio</div>
+      <div class="bd">A 20-minute meditation specifically designed to open your third eye, quiet mental noise, and deepen your energetic connection before every Tarot session. Listen before each reading.</div>
+      <div class="bv">Value: <strong>₹2,000</strong> · <del>₹2,000</del> → <strong style="color:var(--orange)">FREE</strong></div>
+    </div>
+    <div class="bonus-card">
+      <div class="bn">Bonus #4</div>
+      <div class="bt">💬 Lifetime WhatsApp Community Access</div>
+      <div class="bd">3,000+ active students, daily reading practice, doubt resolution, free monthly live Q&amp;A with Ashmeet. This community will support your growth for years — not just 3 days.</div>
+      <div class="bv">Value: <strong>₹2,000</strong> · <del>₹2,000</del> → <strong style="color:var(--orange)">FREE</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SEATS LIVE INDICATOR
+════════════════════════════════════════ -->
+<div class="seats-sec">
+  <div class="seats-inner">
+    <h3 class="seats-h">⚠️ Batch Filling Up Fast</h3>
+    <p class="seats-sub">Seats are limited to maintain quality &amp; personal attention</p>
+    <div class="progress-wrap">
+      <div class="progress-bar" id="progressBar"></div>
+      <span class="progress-text">87 of 100 taken</span>
+    </div>
+    <p class="seats-count">Only <b>13 seats remain</b> at ₹99 — price increases to ₹999 when full</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PRICING + REGISTRATION
+════════════════════════════════════════ -->
+<section class="pricing-sec" id="register">
+  <div class="sec-tag" style="background:rgba(245,197,24,.1);color:var(--gold)">Reserve Your Seat Now</div>
+  <h2 class="sec-h" style="color:var(--gold);margin-bottom:8px">Join the Next Batch</h2>
+  <p style="color:rgba(255,255,255,.45);font-size:14px;margin-bottom:30px">⚠️ Seats limited · Next batch dates confirmed instantly via WhatsApp after payment</p>
+
+  <div class="pricing-card">
+    <h2>3-Day Tarot Mastery Live Workshop</h2>
+    <p class="pricing-lbl">📅 Next batch · Zoom link sent immediately after payment</p>
+
+    <div class="val-stack">
+      <div class="vr"><span>3-Day Live Workshop (2–3 hrs/day)</span><span class="vr-p">₹5,000</span></div>
+      <div class="vr"><span>78-Card Quick Reference Guide</span><span class="vr-p">₹3,500</span></div>
+      <div class="vr"><span>Tarot Side Income Starter Kit</span><span class="vr-p">₹4,500</span></div>
+      <div class="vr"><span>Intuition Activation Audio</span><span class="vr-p">₹2,000</span></div>
+      <div class="vr"><span>Lifetime WhatsApp Community</span><span class="vr-p">₹2,000</span></div>
+      <div class="vr"><span>Lifetime Recording Access</span><span class="vr-p">₹1,000</span></div>
+      <div class="vr"><span>Certificate of Completion</span><span class="vr-p">₹500</span></div>
+    </div>
+
+    <div class="val-total">
+      <span>Total Value</span><span class="vt-p">₹18,500</span>
+    </div>
+
+    <div class="cdown-wrap" style="margin-bottom:22px">
+      <div class="cdown-lbl">⚡ This offer expires in</div>
+      <div class="cdown">
+        <div class="cu"><span class="cn" id="h2">23</span><span class="cl">Hrs</span></div>
+        <span class="cs">:</span>
+        <div class="cu"><span class="cn" id="m2">59</span><span class="cl">Min</span></div>
+        <span class="cs">:</span>
+        <div class="cu"><span class="cn" id="s2">59</span><span class="cl">Sec</span></div>
+      </div>
+    </div>
+
+    <div class="price-box">
+      <div class="ypay">Today you pay only</div>
+      <div><span class="big-p">₹99</span><span class="disc">90% OFF</span></div>
+      <div class="p-note">Regular price ₹999 — limited batch offer only</div>
+    </div>
+
+    <form class="reg-form" id="regForm" onsubmit="handleReg(event)">
+      <input class="fi" id="fName"  type="text"  placeholder="Your Full Name *"              required>
+      <input class="fi" id="fPhone" type="tel"   placeholder="WhatsApp Number (10 digits) *" required pattern="[0-9]{10}" maxlength="10">
+      <input class="fi" id="fEmail" type="email" placeholder="Email Address *"               required>
+      <button class="pay-btn" type="submit" id="payBtn">
+        🔒 Pay ₹99 &amp; Secure My Seat Now
+      </button>
+    </form>
+
+    <div class="pay-secure">🔐 100% Secure · Razorpay Encrypted · Instant Confirmation</div>
+
+    <div class="objection-strip">
+      <div class="obj">✅ <span>No experience needed — beginners welcome</span></div>
+      <div class="obj">✅ <span>Miss a session? Watch the recording — lifetime access</span></div>
+      <div class="obj">✅ <span>Not satisfied? 24-hour money-back guarantee</span></div>
+      <div class="obj">✅ <span>Batch date &amp; Zoom link sent to WhatsApp within minutes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FAQ
+════════════════════════════════════════ -->
+<section class="faq-sec sec">
+  <div class="center" style="margin-bottom:36px">
+    <div class="sec-tag purple">Got Questions?</div>
+    <h2 class="sec-h">We've Answered Everything</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="tFAQ(this)"><span>Do I need a Tarot deck or any prior experience?</span><span class="faq-ico">+</span></button>
+      <div class="faq-a"><div class="faq-ai">Not at all! This is built from scratch for complete beginners. You don't even need a deck to start — Ashmeet will guide you on choosing one. Many students buy a beginner deck on Amazon for ₹300–500. All you need is a phone or laptop and an open heart.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="tFAQ(this)"><span>How is the workshop conducted?</span><span class="faq-ico">+</span></button>
+      <div class="faq-a"><div class="faq-ai">Live on Zoom — 2–3 hours per day for 3 days. Interactive, with live Q&amp;A, group practice, and personal feedback from Ashmeet. All sessions are recorded and shared within 24 hours. You can attend live, or watch the recording, or both.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="tFAQ(this)"><span>Can I really earn from Tarot after just 3 days?</span><span class="faq-ico">+</span></button>
+      <div class="faq-a"><div class="faq-ai">Yes! Day 3 is entirely focused on monetisation — how to price, how to find clients, how to set up your Instagram, how to handle your first booking. Many students do their first paid reading within a week. The Tarot Side Income Starter Kit bonus also walks you through every step with templates and scripts.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="tFAQ(this)"><span>What if I don't have the 'spiritual gift' for Tarot?</span><span class="faq-ico">+</span></button>
+      <div class="faq-a"><div class="faq-ai">This is the biggest myth about Tarot. Intuition is not a gift you either have or don't — it's a muscle you build. Every single one of Ashmeet's 3,000+ students started from zero. The Day 1 intuition meditation alone will open something in you that you didn't know was there. Trust the process.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="tFAQ(this)"><span>Is ₹99 the complete price? Any hidden charges?</span><span class="faq-ico">+</span></button>
+      <div class="faq-a"><div class="faq-ai">₹99 is the full, complete price. The entire 3-day workshop plus all 4 bonuses. No hidden fees, no mandatory upsells. Ashmeet genuinely wants quality Tarot education to be accessible — which is why she prices this so affordably for new students.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="tFAQ(this)"><span>What happens right after I pay?</span><span class="faq-ico">+</span></button>
+      <div class="faq-a"><div class="faq-ai">Within 24 hours you'll get: (1) WhatsApp message with batch dates &amp; Zoom link, (2) invite to the student community, (3) your bonus materials. If you don't receive these within 24 hours, message us on WhatsApp and we'll fix it immediately.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="tFAQ(this)"><span>What if I miss a live session?</span><span class="faq-ico">+</span></button>
+      <div class="faq-a"><div class="faq-ai">No problem at all — all sessions are recorded and uploaded within 24 hours. You get lifetime access to every recording. Many students rewatch sessions multiple times to deepen their understanding. The WhatsApp community is also there to help you with anything you missed.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FINAL CTA
+════════════════════════════════════════ -->
+<section class="final-sec">
+  <h2 class="final-h">
+    The Universe Sent You This Page<br>
+    <span class="gold">for a Reason. 🔮</span>
+  </h2>
+  <p class="final-p">
+    You've been curious about Tarot for too long. You've been looking for a real side income for too long.
+    You've been waiting for the "right time" for too long.<br><br>
+    <b style="color:var(--gold)">This is the right time. This is the right teacher. And ₹99 is the smallest price for the biggest shift of your life.</b>
+  </p>
+  <a href="#register" class="final-btn">✨ Yes — I'm Ready. Join the Workshop for ₹99</a>
+  <p class="final-note">⏰ Price goes back to ₹999 when the timer hits zero · Only 13 seats remaining</p>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="/privacy-policy">Privacy Policy</a>
+    <a href="/terms">Terms &amp; Conditions</a>
+    <a href="/refund">Refund Policy</a>
+    <a href="mailto:support@occultaccademy.com">Contact</a>
+  </div>
+  <p>© 2025 Occult Academy by Ashmeet. All rights reserved.</p>
+  <p class="disclaimer">
+    Results mentioned by students are individual experiences. Earnings depend on individual effort, commitment, and market conditions.
+    This is not a guaranteed income scheme. This site is not part of or endorsed by Meta/Facebook.
+    FACEBOOK is a trademark of META PLATFORMS, INC.
+  </p>
+</footer>
+
+<!-- ══ MOBILE STICKY PAY BAR (only visible on phones) ══ -->
+<div class="mob-bar" id="mobBar">
+  <div class="mob-bar-inner">
+    <div class="mob-bar-left">
+      <span class="mob-bar-seats">⚡ Only 13 seats left</span>
+      <span class="mob-bar-price">₹99 <span class="mob-bar-del">₹999</span></span>
+    </div>
+    <button class="mob-bar-btn" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">
+      🔒 Reserve Seat Now →
+    </button>
+  </div>
+</div>
+
+<!-- WA Float — replace 91XXXXXXXXXX with real number -->
+<a class="wa-float" href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%20want%20to%20know%20more%20about%20the%203-Day%20Tarot%20Workshop" target="_blank" rel="noopener" title="Chat on WhatsApp">💬</a>
+
+<script>
+/* ════════════════════════
+   CONFIG — REPLACE THESE
+════════════════════════ */
+const RZP_KEY      = 'rzp_live_REPLACE_ME';   // Razorpay Key ID
+const AMOUNT_P     = 9900;                     // ₹99 in paise
+const BIZ_NAME     = 'Occult Academy';
+const WA_NUM       = '91XXXXXXXXXX';           // WhatsApp number
+const ABANDON_HOOK = '';                       // Make.com / Zapier webhook URL (optional)
+
+/* ════════════════════════
+   LIVE TICKER
+════════════════════════ */
+const tickerData=[
+  {name:'Priya S.',city:'Delhi',action:'just registered 🎉'},
+  {name:'Sunita K.',city:'Mumbai',action:'joined 2 hrs ago'},
+  {name:'Anjali M.',city:'Pune',action:'just paid ₹99'},
+  {name:'Roohi T.',city:'Bangalore',action:'reserved her seat'},
+  {name:'Kavita R.',city:'Jaipur',action:'just registered 🎉'},
+  {name:'Meera G.',city:'Hyderabad',action:'joined 4 hrs ago'},
+  {name:'Pooja L.',city:'Chennai',action:'just paid ₹99'},
+  {name:'Divya N.',city:'Kolkata',action:'reserved her seat'},
+  {name:'Neha P.',city:'Ahmedabad',action:'joined 1 hr ago'},
+  {name:'Sonal V.',city:'Surat',action:'just registered 🎉'},
+];
+(function initTicker(){
+  const el=document.getElementById('tickerInner');
+  let html='';
+  tickerData.forEach(d=>{html+=`<span>🟢 <b>${d.name}</b> from ${d.city} ${d.action}</span>`;});
+  el.innerHTML=html+html; // duplicate for seamless loop
+})();
+
+/* ════════════════════════
+   COUNTDOWN
+════════════════════════ */
+(function initCdown(){
+  const KEY='oa_cend',DUR=24*3600*1000;
+  let end=parseInt(localStorage.getItem(KEY)||0);
+  if(!end||end<Date.now()){end=Date.now()+DUR;localStorage.setItem(KEY,end);}
+  const ids=[['h1','h2'],['m1','m2'],['s1','s2'],['nh','nm','ns']];
+  function tick(){
+    const d=Math.max(0,end-Date.now());
+    const h=Math.floor(d/3600000),m=Math.floor((d%3600000)/60000),s=Math.floor((d%60000)/1000);
+    const p=n=>String(n).padStart(2,'0');
+    ['h1','h2','nh'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=p(h);});
+    ['m1','m2','nm'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=p(m);});
+    ['s1','s2','ns'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=p(s);});
+    if(!d){end=Date.now()+DUR;localStorage.setItem(KEY,end);}
+  }
+  tick();setInterval(tick,1000);
+})();
+
+/* ════════════════════════
+   FORM + PAYMENT
+════════════════════════ */
+function handleReg(e){
+  e.preventDefault();
+  const name=document.getElementById('fName').value.trim();
+  const phone=document.getElementById('fPhone').value.trim();
+  const email=document.getElementById('fEmail').value.trim();
+  if(!/^\d{10}$/.test(phone)){alert('Please enter a valid 10-digit WhatsApp number');return;}
+  if(typeof fbq!=='undefined')fbq('track','Lead');
+  openRZP(name,phone,email);
+}
+
+function openRZP(name,phone,email){
+  const btn=document.getElementById('payBtn');
+  btn.disabled=true;btn.textContent='Loading secure payment…';
+  // Load Razorpay on-demand — keeps initial page load fast
+  if(!window.Razorpay){
+    const s=document.createElement('script');
+    s.src='https://checkout.razorpay.com/v1/checkout.js';
+    s.onload=()=>_openRZP(name,phone,email,btn);
+    document.head.appendChild(s);
+    return;
+  }
+  _openRZP(name,phone,email,btn);
+}
+function _openRZP(name,phone,email,btn){
+  btn.textContent='Opening secure payment…';
+  const opts={
+    key:RZP_KEY,amount:AMOUNT_P,currency:'INR',name:BIZ_NAME,
+    description:'3-Day Tarot Mastery Workshop',
+    prefill:{name,contact:'+91'+phone,email},
+    theme:{color:'#6c1fff'},
+    handler:function(r){
+      if(typeof fbq!=='undefined')fbq('track','Purchase',{value:99,currency:'INR'});
+      localStorage.setItem('oa_paid',JSON.stringify({name,phone,email,pid:r.razorpay_payment_id,at:Date.now()}));
+      window.location.href='/thank-you?pid='+r.razorpay_payment_id+'&name='+encodeURIComponent(name);
+    },
+    modal:{ondismiss:function(){
+      btn.disabled=false;btn.textContent='🔒 Pay ₹99 & Secure My Seat Now';
+      onAbandon(name,phone,email);
+    }}
+  };
+  new Razorpay(opts).open();
+}
+
+function onAbandon(name,phone,email){
+  const lead={name,phone,email,paid:false,at:new Date().toISOString()};
+  localStorage.setItem('oa_abandoned',JSON.stringify(lead));
+  if(ABANDON_HOOK)fetch(ABANDON_HOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead)}).catch(()=>{});
+  setTimeout(()=>{
+    if(confirm('🔮 Wait — your seat is still reserved!\n\nOnly 13 seats remain at ₹99. Complete your payment to lock in your spot.\n\nClick OK to try again.'))openRZP(name,phone,email);
+  },900);
+}
+
+/* ════════════════════════
+   FAQ
+════════════════════════ */
+function tFAQ(btn){
+  const item=btn.parentElement,ans=item.querySelector('.faq-a'),isOpen=item.classList.contains('active');
+  document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');i.querySelector('.faq-a').classList.remove('open');});
+  if(!isOpen){item.classList.add('active');ans.classList.add('open');}
+}
+
+/* ════════════════════════
+   EXIT INTENT
+════════════════════════ */
+let exitFired=false;
+document.addEventListener('mouseleave',function(e){
+  if(e.clientY<5&&!exitFired&&!localStorage.getItem('oa_paid')){
+    exitFired=true;document.getElementById('exitPopup').classList.add('show');
+  }
+});
+// Mobile: fire after 60s of no scroll
+let scrollTimer;
+window.addEventListener('scroll',()=>{clearTimeout(scrollTimer);scrollTimer=setTimeout(()=>{if(!exitFired&&!localStorage.getItem('oa_paid')){exitFired=true;document.getElementById('exitPopup').classList.add('show');}},60000);});
+function closeExit(){document.getElementById('exitPopup').classList.remove('show');}
+
+/* ════════════════════════
+   SCROLL ANIMATIONS
+════════════════════════ */
+(function(){
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.1});
+  document.querySelectorAll('.fi-anim').forEach(el=>obs.observe(el));
+})();
+
+/* ════════════════════════
+   YOUTUBE LAZY LOAD
+════════════════════════ */
+function loadYT(el,id){
+  const wrap=el.querySelector('div[style*="padding-bottom"]');
+  wrap.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1" frameborder="0" allow="autoplay;encrypted-media;picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"></iframe>';
+}
+
+/* ════════════════════════
+   SMOOTH SCROLL
+════════════════════════ */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+/* ════════════════════════
+   ANIMATE PROGRESS BAR
+════════════════════════ */
+window.addEventListener('load',()=>{
+  setTimeout(()=>{const pb=document.getElementById('progressBar');if(pb)pb.style.width='87%';},300);
+});
+</script>
+</body>
+</html>
