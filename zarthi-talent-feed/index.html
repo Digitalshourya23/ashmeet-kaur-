@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zarthi Pulse — Employee Feed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Zarthi brand */
+    --gold:#FFB42A; --gold-d:#E89F12; --gold-soft:#FFF4DE;
+    --black:#262626; --grey:#6C6969; --ivory:#F4F4F4;
+    --red:#C7413A; --green:#337D38; --blue:#113258; --emerald:#033732;
+    --white:#fff; --line:#E8E6E2; --line2:#EFEDE9;
+    --txt:#262626; --mut:#6C6969;
+    --radius:18px;
+    --shadow:0 10px 30px rgba(38,38,38,.10);
+    --shadow-lg:0 24px 60px rgba(17,50,88,.22);
+    --head:'Poppins',system-ui,Segoe UI,sans-serif;
+    --body:'Mulish',system-ui,Segoe UI,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--body);background:var(--ivory);color:var(--txt);min-height:100vh;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4,.head{font-family:var(--head)}
+  .wrap{max-width:1200px;margin:0 auto;padding:24px 20px 70px}
+
+  /* Header */
+  header{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:22px}
+  .brand{display:flex;align-items:center;gap:13px}
+  .logo{width:50px;height:50px;border-radius:14px;background:var(--black);display:grid;place-items:center;box-shadow:var(--shadow)}
+  .logo b{font-family:var(--head);font-weight:800;font-size:26px;color:var(--gold);line-height:1}
+  .brand h1{font-size:21px;letter-spacing:.2px;color:var(--black);font-weight:700}
+  .brand p{color:var(--mut);font-size:12.5px;margin-top:2px}
+  .chiptag{font-size:10.5px;color:var(--gold-d);border:1px solid #F2D79A;background:var(--gold-soft);padding:3px 9px;border-radius:999px;font-weight:700;vertical-align:middle;margin-left:6px}
+
+  .tabs{display:flex;gap:6px;background:var(--white);border:1px solid var(--line);padding:6px;border-radius:14px;box-shadow:var(--shadow)}
+  .tab{padding:9px 15px;border-radius:10px;font-size:13.5px;font-weight:700;color:var(--mut);cursor:pointer;border:none;background:transparent;transition:.15s;font-family:var(--head)}
+  .tab.active{background:var(--black);color:var(--gold)}
+
+  .view{display:none}
+  .view.active{display:block;animation:fade .3s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  /* ---------- APP DEMO ---------- */
+  .appgrid{display:grid;grid-template-columns:320px 1fr;gap:26px;align-items:start}
+  @media(max-width:940px){.appgrid{grid-template-columns:1fr}}
+
+  .phone{width:390px;max-width:100%;margin:0 auto;background:var(--white);border:11px solid var(--black);border-radius:46px;box-shadow:var(--shadow-lg);overflow:hidden;height:780px;display:flex;flex-direction:column;position:relative}
+  .notch{height:24px;background:var(--black);display:flex;align-items:center;justify-content:center}
+  .notch::after{content:'';width:120px;height:6px;background:#000;border-radius:999px;opacity:.5}
+
+  .appbar{display:flex;align-items:center;justify-content:space-between;padding:11px 15px;background:var(--blue);color:#fff}
+  .appbar .blogo{display:flex;align-items:center;gap:9px}
+  .appbar .blogo .lz{width:30px;height:30px;border-radius:9px;background:var(--gold);display:grid;place-items:center;font-family:var(--head);font-weight:800;color:var(--black);font-size:17px}
+  .appbar .t{font-family:var(--head);font-weight:700;font-size:17px;letter-spacing:.2px}
+  .appbar .t span{color:var(--gold)}
+  .bar-actions{display:flex;gap:8px}
+  .icbtn{width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.12);display:grid;place-items:center;border:none;cursor:pointer;font-size:16px;color:#fff;position:relative;transition:.15s}
+  .icbtn:hover{background:rgba(255,255,255,.22)}
+  .icbtn .badge{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;padding:0 4px;border-radius:999px;background:var(--red);color:#fff;font-size:10.5px;font-weight:800;display:grid;place-items:center;border:2px solid var(--blue);font-family:var(--head)}
+  .icbtn.saved-on{background:var(--gold);color:var(--black)}
+
+  /* mandatory banner */
+  .mbanner{display:none;align-items:center;gap:10px;padding:10px 14px;background:var(--red);color:#fff;font-size:12px}
+  .mbanner.show{display:flex}
+  .mbanner .m-ic{font-size:16px}
+  .mbanner .m-txt{flex:1;line-height:1.3}
+  .mbanner .m-txt b{display:block;font-family:var(--head);font-size:12px}
+  .mbanner button{background:#fff;color:var(--red);border:none;font-weight:800;font-size:11px;padding:6px 11px;border-radius:9px;cursor:pointer;white-space:nowrap;font-family:var(--head)}
+
+  .deptbar{display:flex;gap:7px;padding:11px 14px;overflow-x:auto;background:var(--white);border-bottom:1px solid var(--line)}
+  .deptbar::-webkit-scrollbar{display:none}
+  .chip{white-space:nowrap;font-size:12px;font-weight:700;color:var(--mut);background:var(--ivory);border:1px solid var(--line);padding:7px 13px;border-radius:999px;cursor:pointer;transition:.15s;font-family:var(--head)}
+  .chip.active{background:var(--gold);color:var(--black);border-color:var(--gold)}
+
+  .feed{flex:1;overflow-y:auto;padding:13px 13px 90px;background:var(--ivory)}
+  .feed::-webkit-scrollbar{width:6px}.feed::-webkit-scrollbar-thumb{background:#dcd9d4;border-radius:9px}
+
+  .card{background:var(--white);border:1px solid var(--line);border-radius:16px;margin-bottom:13px;overflow:hidden;box-shadow:0 4px 16px rgba(38,38,38,.04)}
+  .post-h{display:flex;align-items:center;gap:10px;padding:12px 13px}
+  .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:var(--head);font-weight:700;color:#fff;font-size:14px;flex-shrink:0}
+  .post-h .nm{font-family:var(--head);font-weight:600;font-size:13.5px}
+  .post-h .mt{color:var(--mut);font-size:11px;margin-top:1px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .pill{font-size:10px;padding:2px 8px;border-radius:999px;font-weight:700;font-family:var(--head)}
+  .post-body{padding:0 13px 11px;font-size:13.5px;line-height:1.55}
+  .post-text-banner{margin:0 13px 11px;border-radius:13px;padding:30px 18px;text-align:center;font-weight:800;font-size:19px;line-height:1.35}
+  .media{height:178px;display:grid;place-items:center;font-size:13px;color:#fff;font-weight:700;letter-spacing:.4px;position:relative;font-family:var(--head)}
+  .media .lbl{background:rgba(0,0,0,.32);padding:6px 13px;border-radius:999px;backdrop-filter:blur(4px)}
+  .carousel-dots{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);display:flex;gap:5px}
+  .carousel-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.55)}
+  .carousel-dots i.on{background:#fff;width:16px;border-radius:9px}
+  .play{position:absolute;width:56px;height:56px;border-radius:50%;background:rgba(0,0,0,.42);display:grid;place-items:center;font-size:21px;backdrop-filter:blur(4px)}
+  .post-meta{display:flex;gap:8px;align-items:center;padding:5px 13px;color:var(--mut);font-size:11px;flex-wrap:wrap}
+  .actions{display:flex;gap:2px;padding:7px 7px;border-top:1px solid var(--line2)}
+  .act{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px 2px;border-radius:10px;font-size:11.5px;font-weight:700;color:var(--mut);cursor:pointer;background:transparent;border:none;transition:.12s;font-family:var(--head);white-space:nowrap}
+  .act:hover{background:var(--ivory);color:var(--black)}
+  .act.liked{color:var(--red)}
+  .act.kudos{color:var(--gold-d)}
+  .act.saved{color:var(--blue)}
+
+  /* leaderboard */
+  .lb{background:linear-gradient(135deg,var(--blue),#0a1f3a);border:none}
+  .lb-h{display:flex;align-items:center;justify-content:space-between;padding:13px 15px 7px;color:#fff}
+  .lb-h b{font-family:var(--head);font-size:14px}
+  .lb-h .live{font-size:10.5px;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:5px}
+  .lb-h .live::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 var(--gold);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,180,42,.6)}70%{box-shadow:0 0 0 7px rgba(255,180,42,0)}100%{box-shadow:0 0 0 0 rgba(255,180,42,0)}}
+  .lb-row{display:flex;align-items:center;gap:10px;padding:7px 15px;font-size:12.5px;color:#fff}
+  .rank{width:23px;height:23px;border-radius:7px;display:grid;place-items:center;font-family:var(--head);font-weight:800;font-size:12px;flex-shrink:0}
+  .lb-row .pts{margin-left:auto;font-family:var(--head);font-weight:800;color:var(--gold);font-size:12.5px}
+  .lb-row .nm{font-weight:700}
+  .lb-row .ro{color:#bcc7d8;font-size:10.5px}
+  .lb-cta{padding:9px 15px 14px}
+  .lb-cta button{width:100%;padding:10px;border-radius:11px;border:none;font-family:var(--head);font-weight:700;font-size:12.5px;cursor:pointer;background:var(--gold);color:var(--black)}
+
+  /* newsletter */
+  .nl{background:linear-gradient(135deg,var(--emerald),var(--green));border:none}
+  .nl .inner{padding:15px}
+  .nl b{font-family:var(--head);font-size:14px;color:#fff}
+  .nl p{color:#d6ecd7;font-size:12px;margin:6px 0 12px;line-height:1.45}
+  .nlbtn{width:100%;padding:11px;border-radius:11px;border:none;font-family:var(--head);font-weight:800;font-size:13px;cursor:pointer;background:var(--gold);color:var(--black)}
+  .nlbtn.done{background:rgba(255,255,255,.18);color:#eafbe9}
+
+  /* FAB */
+  .fab{position:absolute;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:var(--gold);display:grid;place-items:center;font-size:30px;color:var(--black);border:none;cursor:pointer;box-shadow:0 12px 28px rgba(255,180,42,.55);z-index:6;font-weight:300}
+  .fab:active{transform:scale(.94)}
+
+  /* overlays */
+  .overlay{position:absolute;inset:0;background:var(--white);display:none;flex-direction:column;z-index:12;animation:slideUp .25s ease}
+  .overlay.open{display:flex}
+  @keyframes slideUp{from{transform:translateY(18px);opacity:.5}to{transform:none;opacity:1}}
+  .ov-head{display:flex;align-items:center;gap:11px;padding:13px 15px;border-bottom:1px solid var(--line);background:var(--white)}
+  .ov-head .back{width:34px;height:34px;border-radius:10px;background:var(--ivory);border:none;cursor:pointer;font-size:17px;display:grid;place-items:center}
+  .ov-head h3{font-family:var(--head);font-size:16px;flex:1}
+  .ov-head .cnt{font-size:11px;color:var(--mut)}
+  .ov-body{flex:1;overflow-y:auto;padding:14px;background:var(--ivory)}
+  .ov-body::-webkit-scrollbar{width:6px}.ov-body::-webkit-scrollbar-thumb{background:#dcd9d4;border-radius:9px}
+  .empty{text-align:center;color:var(--mut);padding:50px 16px;font-size:13px}
+  .empty .big{font-size:40px;display:block;margin-bottom:10px;opacity:.6}
+
+  /* search */
+  .searchbox{display:flex;align-items:center;gap:9px;background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:0 12px;margin:0;flex:1}
+  .searchbox input{border:none;background:transparent;outline:none;padding:11px 0;font-size:14px;width:100%;font-family:var(--body);color:var(--black)}
+  .sec-lbl{font-family:var(--head);font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--mut);margin:8px 2px 9px;font-weight:700}
+  .res-person{display:flex;align-items:center;gap:11px;background:var(--white);border:1px solid var(--line);border-radius:13px;padding:11px 12px;margin-bottom:8px}
+  .res-person .nm{font-family:var(--head);font-weight:600;font-size:13.5px}
+  .res-person .em{color:var(--mut);font-size:11px}
+  .res-person .tag{margin-left:auto;font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:999px;font-family:var(--head)}
+  .res-post{background:var(--white);border:1px solid var(--line);border-radius:13px;padding:11px 12px;margin-bottom:8px;font-size:12.5px;line-height:1.45;cursor:pointer}
+  .res-post .who{font-family:var(--head);font-weight:600;font-size:12px;margin-bottom:3px;display:flex;gap:7px;align-items:center}
+
+  /* notifications */
+  .ntf{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px 13px;margin-bottom:9px;display:flex;gap:11px;align-items:flex-start;position:relative}
+  .ntf.unread{border-left:3px solid var(--gold)}
+  .ntf.mand{border:1px solid #E9C2BF;background:#FCF1F0}
+  .ntf .nic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex-shrink:0;font-size:15px}
+  .ntf .nbody{flex:1}
+  .ntf .ntitle{font-family:var(--head);font-weight:600;font-size:13px;line-height:1.3}
+  .ntf .ntime{color:var(--mut);font-size:10.5px;margin-top:2px}
+  .ntf .ndesc{font-size:12px;color:#4a4a4a;margin-top:5px;line-height:1.45}
+  .ntf .nrow{display:flex;gap:7px;margin-top:9px}
+  .ntf .nbtn{font-family:var(--head);font-size:11px;font-weight:700;padding:6px 11px;border-radius:9px;border:none;cursor:pointer}
+  .nbtn.ack{background:var(--red);color:#fff}
+  .nbtn.read{background:var(--ivory);color:var(--black);border:1px solid var(--line)}
+  .nbtn.dismiss{background:transparent;color:var(--mut)}
+  .mtag{font-size:9.5px;font-weight:800;font-family:var(--head);color:var(--red);border:1px solid #E9C2BF;border-radius:6px;padding:2px 6px;letter-spacing:.4px}
+  .ntf.read-done{opacity:.55}
+
+  /* composer */
+  .sheet{padding:15px 15px 20px;overflow-y:auto}
+  .sheet .sub{color:var(--mut);font-size:11.5px;margin-bottom:13px}
+  .fmtrow{display:flex;gap:7px;margin-bottom:13px;flex-wrap:wrap}
+  .fmt{font-family:var(--head);font-size:11.5px;font-weight:700;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--white);color:var(--mut);cursor:pointer}
+  .fmt.on{background:var(--black);color:var(--gold);border-color:var(--black)}
+  .compose-area{border-radius:14px;padding:22px 14px;min-height:120px;font-weight:700;font-size:17px;text-align:center;outline:none;line-height:1.4;margin-bottom:13px}
+  .compose-area:empty:before{content:attr(data-ph);color:rgba(255,255,255,.7);font-weight:600}
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:13px}
+  .tool{display:flex;align-items:center;gap:6px;font-family:var(--head);font-size:11.5px;font-weight:700;color:var(--mut);background:var(--white);border:1px solid var(--line);padding:8px 11px;border-radius:10px;cursor:pointer}
+  .tool.on{color:var(--black);border-color:var(--gold);background:var(--gold-soft)}
+  .swatches{display:flex;gap:7px;margin-bottom:6px;flex-wrap:wrap}
+  .sw{width:28px;height:28px;border-radius:9px;cursor:pointer;border:2px solid transparent;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+  .sw.sel{border-color:var(--black)}
+  .lbl-sm{font-family:var(--head);font-size:10.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.6px;margin:9px 0 6px;font-weight:700}
+  .fontrow{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:6px}
+  .fpick{font-size:12px;padding:7px 12px;border-radius:9px;border:1px solid var(--line);background:var(--white);color:var(--mut);cursor:pointer}
+  .fpick.on{color:var(--black);border-color:var(--gold);background:var(--gold-soft)}
+  .postbtn{width:100%;padding:14px;border-radius:13px;border:none;font-family:var(--head);font-weight:800;font-size:14px;cursor:pointer;background:var(--gold);color:var(--black);margin-top:8px}
+  .meta-hint{font-size:10.5px;color:var(--mut);margin-top:8px;text-align:center}
+
+  /* side help */
+  .side h3{font-family:var(--head);font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--mut);margin-bottom:11px;font-weight:700}
+  .note{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 4px 14px rgba(38,38,38,.04)}
+  .note b{font-family:var(--head);font-size:13.5px;color:var(--black)}
+  .note p{color:var(--mut);font-size:12.5px;line-height:1.5;margin-top:5px}
+  .legend{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+  .legend div{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:8px}
+  .dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+  .tline{display:flex;gap:8px;font-size:12px;color:var(--mut);padding:5px 0;align-items:flex-start}
+  .tline .k{color:var(--green);font-weight:800;font-family:var(--head)}
+
+  /* ---------- ADMIN ---------- */
+  .admin{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+  .admin h2{font-family:var(--head);font-size:19px;margin-bottom:4px}
+  .admin .sub{color:var(--mut);font-size:13px;margin-bottom:18px}
+  .adsplit{display:grid;grid-template-columns:1fr 320px;gap:22px;align-items:start}
+  @media(max-width:820px){.adsplit{grid-template-columns:1fr}}
+  .search{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+  .search input{flex:1;min-width:200px;background:var(--ivory);border:1px solid var(--line);color:var(--black);padding:12px 14px;border-radius:12px;font-size:14px;outline:none;font-family:var(--body)}
+  .search input:focus{border-color:var(--gold)}
+  .deptsel{background:var(--ivory);border:1px solid var(--line);color:var(--black);padding:12px 14px;border-radius:12px;font-size:13px;font-family:var(--body)}
+  .utable{width:100%;border-collapse:collapse}
+  .utable th{text-align:left;font-family:var(--head);font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut);padding:9px 12px;border-bottom:2px solid var(--line)}
+  .utable td{padding:11px 12px;border-bottom:1px solid var(--line2);font-size:13px}
+  .utable tbody tr{cursor:pointer;transition:.12s}
+  .utable tbody tr:hover{background:var(--gold-soft)}
+  .u{display:flex;align-items:center;gap:10px}
+  .u .em{color:var(--mut);font-size:11px}
+  .badge{font-size:10.5px;padding:3px 9px;border-radius:999px;font-weight:700;font-family:var(--head)}
+
+  /* admin: send notification */
+  .panelbox{background:var(--ivory);border:1px solid var(--line);border-radius:16px;padding:16px}
+  .panelbox h4{font-family:var(--head);font-size:14px;margin-bottom:3px}
+  .panelbox .ps{color:var(--mut);font-size:11.5px;margin-bottom:13px}
+  .panelbox label{font-family:var(--head);font-size:11px;font-weight:700;color:var(--mut);display:block;margin:10px 0 5px;text-transform:uppercase;letter-spacing:.4px}
+  .panelbox input,.panelbox textarea{width:100%;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px;font-family:var(--body);outline:none;resize:vertical}
+  .panelbox input:focus,.panelbox textarea:focus{border-color:var(--gold)}
+  .typetog{display:flex;gap:8px;margin-top:6px}
+  .typetog button{flex:1;font-family:var(--head);font-size:12px;font-weight:700;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--white);color:var(--mut);cursor:pointer}
+  .typetog button.on{background:var(--black);color:var(--gold);border-color:var(--black)}
+  .typetog button.mand.on{background:var(--red);color:#fff;border-color:var(--red)}
+  .sendbtn{width:100%;margin-top:14px;padding:12px;border-radius:11px;border:none;font-family:var(--head);font-weight:800;font-size:13px;background:var(--gold);color:var(--black);cursor:pointer}
+
+  .profile{margin-top:20px;background:var(--ivory);border:1px solid var(--line);border-radius:16px;padding:20px;display:none}
+  .profile.show{display:block;animation:fade .3s}
+  .phead{display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+  .phead .big{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;font-family:var(--head);font-weight:800;font-size:23px;color:#fff}
+  .phead h3{font-family:var(--head);font-size:18px}
+  .phead .role{color:var(--mut);font-size:13px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+  @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--white);border:1px solid var(--line);border-radius:13px;padding:14px;text-align:center}
+  .stat .n{font-family:var(--head);font-size:25px;font-weight:800}
+  .stat .l{font-size:11px;color:var(--mut);margin-top:3px}
+  .kwrap{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+  .kw{font-family:var(--head);font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:999px;background:var(--white);border:1px solid var(--line)}
+  .logrow{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line2);font-size:12.5px}
+  .logrow .ic{width:27px;height:27px;border-radius:8px;display:grid;place-items:center;font-size:13px;flex-shrink:0;background:var(--white);border:1px solid var(--line)}
+  .logrow .tm{margin-left:auto;color:var(--mut);font-size:11px;white-space:nowrap}
+
+  /* ---------- FLOW ---------- */
+  .flowwrap{display:grid;gap:20px}
+  .panel{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+  .panel h2{font-family:var(--head);font-size:17px;margin-bottom:4px}
+  .panel .sub{color:var(--mut);font-size:13px;margin-bottom:16px}
+  svg{width:100%;height:auto;display:block}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:860px){.grid2{grid-template-columns:1fr}}
+  .foot{text-align:center;color:var(--mut);font-size:12px;margin-top:34px}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(90px);background:var(--black);color:#fff;padding:13px 22px;border-radius:12px;font-family:var(--head);font-weight:700;font-size:13px;box-shadow:var(--shadow-lg);transition:.3s;z-index:99}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+  .toast b{color:var(--gold)}
+
+  /* reshare + album + spotlight */
+  .reshare-tag{padding:10px 13px 0;font-size:11.5px;color:var(--green);font-family:var(--head);font-weight:700}
+  .embed{margin:9px 11px 11px;border:1px solid var(--line);border-radius:13px;overflow:hidden;background:#fafafa}
+  .embed .post-h{padding:10px 11px}.embed .av{width:32px;height:32px;font-size:11px}.embed .nm{font-size:12px}.embed .post-body{font-size:12px;padding:0 11px 9px}.embed .media{height:120px}
+  .act.reshared{color:var(--green)}
+  .spot{font-size:9.5px;font-family:var(--head);font-weight:800;color:#7a5200;background:var(--gold);border-radius:6px;padding:2px 6px;margin-left:4px}
+  .album{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+  .atile{height:96px;display:grid;place-items:center;position:relative}
+  .atile span{position:absolute;inset:0;background:rgba(38,38,38,.55);color:#fff;font-family:var(--head);font-weight:800;font-size:20px;display:grid;place-items:center}
+
+  /* admin promote panel */
+  .promo-post{background:var(--white);border:1px solid var(--line);border-radius:11px;padding:10px;margin-bottom:9px;font-size:12px}
+  .promo-post .pp-txt{line-height:1.4;margin-bottom:7px}
+  .promo-post .eng{color:var(--mut);font-size:10.5px;margin-bottom:8px;font-family:var(--head);font-weight:700}
+  .consent{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--mut);margin-bottom:8px;cursor:pointer;line-height:1.3}
+  .consent input{width:15px;height:15px;accent-color:var(--green);flex-shrink:0}
+  .promobtn{width:100%;padding:9px;border-radius:9px;border:none;font-family:var(--head);font-weight:700;font-size:11.5px;cursor:pointer;background:var(--blue);color:#fff}
+  .promobtn:disabled{background:#cfd3da;color:#8a8f99;cursor:not-allowed}
+  .promo-post.done{border-color:#bfe0c2;background:#eef7ee}
+  .promo-live{font-family:var(--head);font-weight:800;font-size:11.5px;color:var(--green)}
+
+  /* PUBLIC PAGE */
+  .pubwrap{display:grid;gap:22px}
+  .pub-hero{background:linear-gradient(135deg,var(--blue),#0a1f3a);border-radius:var(--radius);padding:40px 34px;color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .pub-hero::after{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:var(--gold);opacity:.16}
+  .pub-hero .eyebrow{font-family:var(--head);font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+  .pub-hero h2{font-family:var(--head);font-size:31px;margin:9px 0 8px;line-height:1.15}
+  .pub-hero p{color:#cdd7e6;font-size:15px;max-width:560px;line-height:1.55}
+  .pub-stats{display:flex;gap:30px;margin-top:24px;flex-wrap:wrap}
+  .pub-stats .s b{font-family:var(--head);font-size:28px;color:var(--gold);display:block}
+  .pub-stats .s span{font-size:12px;color:#cdd7e6}
+  .pub-sec h3{font-family:var(--head);font-size:18px;margin-bottom:4px}
+  .pub-sec .ps{color:var(--mut);font-size:13px;margin-bottom:16px}
+  .wall{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:760px){.wall{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.wall{grid-template-columns:1fr}}
+  .tile{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--white);box-shadow:var(--shadow)}
+  .tile .tmedia{height:120px;display:grid;place-items:center;color:#fff;font-family:var(--head);font-weight:700;font-size:12px;text-align:center;padding:0 10px}
+  .tile .tbody{padding:12px}
+  .tile .tbody .tw{font-size:12.5px;line-height:1.45}
+  .tile .tbody .tm{margin-top:8px;font-size:11px;color:var(--mut);font-family:var(--head);font-weight:700;display:flex;gap:6px;align-items:center}
+  .tile .tbody .tm .src{margin-left:auto;color:var(--blue)}
+  .roles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:640px){.roles{grid-template-columns:1fr}}
+  .role{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--line);border-radius:13px;padding:14px 16px}
+  .role .rt{font-family:var(--head);font-weight:700;font-size:14px}
+  .role .rm{color:var(--mut);font-size:12px;margin-top:2px}
+  .role .rb{margin-left:auto;font-family:var(--head);font-weight:700;font-size:12px;background:var(--gold);color:var(--black);border:none;border-radius:9px;padding:8px 14px;cursor:pointer}
+  .talent{background:linear-gradient(135deg,var(--emerald),var(--green));border-radius:var(--radius);padding:30px 28px;color:#fff;box-shadow:var(--shadow)}
+  .talent h3{font-family:var(--head);font-size:22px;margin-bottom:6px}
+  .talent p{color:#d6ecd7;font-size:14px;margin-bottom:18px;max-width:520px;line-height:1.5}
+  .tform{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:620px}
+  @media(max-width:560px){.tform{grid-template-columns:1fr}}
+  .tform input,.tform select{padding:12px 14px;border-radius:11px;border:none;font-size:13px;font-family:var(--body);outline:none}
+  .tform .full{grid-column:1/-1}
+  .tform button{grid-column:1/-1;padding:13px;border-radius:11px;border:none;font-family:var(--head);font-weight:800;font-size:14px;background:var(--gold);color:var(--black);cursor:pointer}
+
+  /* STORE / COMMERCE */
+  .icbtn .badge.cart{background:var(--green);border-color:var(--blue)}
+  .store-head{display:flex;align-items:center;gap:9px;padding:10px 13px;border-bottom:1px solid var(--line);background:#fff}
+  .store-head h3{font-family:var(--head);font-size:15.5px;flex:1}
+  .cartbtn{position:relative;background:var(--ivory);border:1px solid var(--line);border-radius:11px;padding:8px 13px;font-family:var(--head);font-weight:700;font-size:12px;cursor:pointer}
+  .cartbtn .cb{position:absolute;top:-7px;right:-7px;min-width:18px;height:18px;background:var(--green);color:#fff;border-radius:999px;font-size:10.5px;display:grid;place-items:center;font-weight:800;border:2px solid #fff;padding:0 4px}
+  .store-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+  .prod{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .prod .pimg{height:104px;display:grid;place-items:center;font-size:42px}
+  .prod .pb{padding:10px}
+  .prod .pn{font-family:var(--head);font-weight:700;font-size:12.5px;line-height:1.2}
+  .prod .pp{font-family:var(--head);font-weight:800;font-size:14px;color:var(--blue);margin-top:4px}
+  .prod .padd{width:100%;margin-top:8px;padding:8px;border-radius:9px;border:none;background:var(--gold);color:var(--black);font-family:var(--head);font-weight:700;font-size:12px;cursor:pointer}
+  .cart-row{display:flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:10px;margin-bottom:9px}
+  .cart-row .ci{width:46px;height:46px;border-radius:10px;display:grid;place-items:center;font-size:23px;flex-shrink:0}
+  .cart-row .cn{font-family:var(--head);font-weight:700;font-size:12.5px}
+  .cart-row .cpp{color:var(--mut);font-size:11px}
+  .qty{display:flex;align-items:center;gap:9px;margin-left:auto}
+  .qty button{width:26px;height:26px;border-radius:8px;border:1px solid var(--line);background:var(--ivory);font-size:15px;cursor:pointer;font-weight:700;line-height:1}
+  .qty b{font-family:var(--head);min-width:16px;text-align:center}
+  .cart-total{display:flex;justify-content:space-between;align-items:center;padding:14px 2px;font-family:var(--head)}
+  .cart-total .tt{font-size:13px;color:var(--mut)}
+  .cart-total .tv{font-size:21px;font-weight:800}
+  .checkout{width:100%;padding:14px;border-radius:13px;border:none;background:var(--gold);color:var(--black);font-family:var(--head);font-weight:800;font-size:14px;cursor:pointer}
+  .store-note{font-size:11px;color:var(--mut);text-align:center;margin-top:11px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="logo"><b>Z</b></div>
+      <div>
+        <h1>Zarthi Pulse <span class="chiptag">CONCEPT DEMO</span></h1>
+        <p>The employee feed · save · search · notifications · R&amp;R · smart relevance</p>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-view="app">📱 App Demo</button>
+      <button class="tab" data-view="admin">🛠️ Admin Console</button>
+      <button class="tab" data-view="public">🌐 Life at Zarthi</button>
+      <button class="tab" data-view="flow">🔀 Flow &amp; Architecture</button>
+    </div>
+  </header>
+
+  <!-- ============ APP DEMO ============ -->
+  <section class="view active" id="app">
+    <div class="appgrid">
+      <div class="side">
+        <h3>Try every feature</h3>
+        <div class="note">
+          <b>🔖 Save &amp; revisit</b>
+          <p>Tap <b>Save</b> on any post. Open the <b>bookmark icon</b> (top bar) to see your <b>Saved bucket</b> and revisit anytime.</p>
+        </div>
+        <div class="note">
+          <b>🔍 Search (now working)</b>
+          <p>Tap the <b>search icon</b> — find posts by text/#tag and people by name or email.</p>
+        </div>
+        <div class="note">
+          <b>🔔 Notifications</b>
+          <p>The <b>bell</b> shows a live count. <span style="color:var(--red);font-weight:700">Mandatory</span> alerts must be <b>Acknowledged</b> to clear (and show a red banner); normal ones use <b>Mark as read</b>. Send your own from the <b>Admin Console</b>.</p>
+        </div>
+        <div class="note">
+          <b>🎨 Create &amp; style</b>
+          <p>Tap <b>＋</b> → pick a format, then font, text colour, background, GIF, music, location, #tags.</p>
+        </div>
+        <div class="note">
+          <b>Relevance legend</b>
+          <div class="legend">
+            <div><span class="dot" style="background:var(--blue)"></span> Marketing (SEO / Paid / SMM)</div>
+            <div><span class="dot" style="background:var(--green)"></span> Sales</div>
+            <div><span class="dot" style="background:var(--emerald)"></span> Technology</div>
+            <div><span class="dot" style="background:var(--gold)"></span> Company-wide (everyone)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="appbar">
+          <div class="blogo"><div class="lz">Z</div><span class="t">Pulse</span></div>
+          <div class="bar-actions">
+            <button class="icbtn" id="btnSearch" title="Search">🔍</button>
+            <button class="icbtn" id="btnStore" title="Commerce — Zarthi Store">🛍️<span class="badge cart" id="cartBadge" style="display:none">0</span></button>
+            <button class="icbtn" id="btnSaved" title="Saved">🔖</button>
+            <button class="icbtn" id="btnBell" title="Notifications">🔔<span class="badge" id="bellBadge">0</span></button>
+          </div>
+        </div>
+
+        <div class="mbanner" id="mbanner">
+          <span class="m-ic">⚠️</span>
+          <div class="m-txt" id="mbannerTxt"></div>
+          <button id="mbannerAck">Acknowledge</button>
+        </div>
+
+        <div class="deptbar" id="deptbar">
+          <button class="chip active" data-dept="all">✨ For You</button>
+          <button class="chip" data-dept="marketing">📣 Marketing</button>
+          <button class="chip" data-dept="seo">🔎 SEO</button>
+          <button class="chip" data-dept="paid">💰 Paid Media</button>
+          <button class="chip" data-dept="smm">📱 SMM</button>
+          <button class="chip" data-dept="sales">🤝 Sales</button>
+          <button class="chip" data-dept="tech">💻 Technology</button>
+        </div>
+
+        <div class="feed" id="feed"></div>
+        <button class="fab" id="fab">＋</button>
+
+        <!-- SEARCH overlay -->
+        <div class="overlay" id="searchPanel">
+          <div class="ov-head">
+            <button class="back" data-close="searchPanel">←</button>
+            <div class="searchbox">🔍<input id="searchInput" placeholder="Search posts, #tags, people…" /></div>
+          </div>
+          <div class="ov-body" id="searchResults"></div>
+        </div>
+
+        <!-- SAVED overlay -->
+        <div class="overlay" id="savedPanel">
+          <div class="ov-head">
+            <button class="back" data-close="savedPanel">←</button>
+            <h3>🔖 Saved bucket</h3>
+            <span class="cnt" id="savedCount"></span>
+          </div>
+          <div class="ov-body" id="savedBody"></div>
+        </div>
+
+        <!-- NOTIFICATIONS overlay -->
+        <div class="overlay" id="notifPanel">
+          <div class="ov-head">
+            <button class="back" data-close="notifPanel">←</button>
+            <h3>🔔 Notifications</h3>
+            <span class="cnt" id="notifMeta"></span>
+          </div>
+          <div class="ov-body" id="notifBody"></div>
+        </div>
+
+        <!-- COMPOSER overlay -->
+        <div class="overlay" id="composer">
+          <div class="ov-head">
+            <button class="back" data-close="composer">←</button>
+            <h3>Create a post</h3>
+          </div>
+          <div class="sheet">
+            <div class="fmtrow" id="fmtrow">
+              <button class="fmt on" data-fmt="text">Aa Text</button>
+              <button class="fmt" data-fmt="photo">🖼 Photo</button>
+              <button class="fmt" data-fmt="carousel">🎠 Carousel</button>
+              <button class="fmt" data-fmt="video">🎬 Video</button>
+              <button class="fmt" data-fmt="gif">GIF</button>
+            </div>
+            <div class="compose-area" id="composeArea" contenteditable="true" data-ph="Share something with your team…"></div>
+            <div class="lbl-sm">Font style</div>
+            <div class="fontrow" id="fontrow">
+              <button class="fpick on" data-font="var(--head)">Classic</button>
+              <button class="fpick" data-font="Georgia,serif" style="font-family:Georgia,serif">Elegant</button>
+              <button class="fpick" data-font="'Courier New',monospace" style="font-family:monospace">Mono</button>
+              <button class="fpick" data-font="'Comic Sans MS',cursive" style="font-family:cursive">Fun</button>
+              <button class="fpick" data-font="Impact,sans-serif" style="font-family:Impact">Bold</button>
+            </div>
+            <div class="lbl-sm">Text colour</div>
+            <div class="swatches" id="textColors"></div>
+            <div class="lbl-sm">Background</div>
+            <div class="swatches" id="bgColors"></div>
+            <div class="toolbar" style="margin-top:13px">
+              <button class="tool" data-tool="gif">🎞️ GIF</button>
+              <button class="tool" data-tool="music">🎵 Music</button>
+              <button class="tool" data-tool="location">📍 Location</button>
+              <button class="tool" data-tool="tag">#️⃣ Tag team</button>
+            </div>
+            <button class="postbtn" id="postBtn">Post to Feed</button>
+            <div class="meta-hint" id="metaHint"></div>
+          </div>
+        </div>
+
+        <!-- STORE / COMMERCE overlay -->
+        <div class="overlay" id="storePanel">
+          <div class="store-head">
+            <button class="back" data-close="storePanel">←</button>
+            <h3>🛍️ Zarthi Store</h3>
+            <button class="cartbtn" id="cartToggle">🛒 Cart<span class="cb" id="cartCount" style="display:none">0</span></button>
+          </div>
+          <div class="ov-body" id="storeBody"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ADMIN ============ -->
+  <section class="view" id="admin">
+    <div class="admin">
+      <h2>People Insights &amp; Broadcast — Admin Console</h2>
+      <div class="sub">Search any employee and see their activity. Send notifications straight into the feed (normal or mandatory).</div>
+      <div class="adsplit">
+        <div>
+          <div class="search">
+            <input id="userSearch" placeholder="Search by name or email…  e.g. priya / aman@zarthi.com" />
+            <select class="deptsel" id="deptFilter">
+              <option value="all">All departments</option>
+              <option value="marketing">Marketing</option>
+              <option value="sales">Sales</option>
+              <option value="tech">Technology</option>
+              <option value="hr">HR / People</option>
+            </select>
+          </div>
+          <table class="utable">
+            <thead><tr><th>Employee</th><th>Department</th><th>Specialization</th><th>Posts</th><th>Comments</th><th>Kudos</th></tr></thead>
+            <tbody id="userRows"></tbody>
+          </table>
+          <div class="profile" id="profile"></div>
+        </div>
+
+        <div class="adcol">
+          <div class="panelbox">
+          <h4>📢 Send a notification</h4>
+          <div class="ps">Goes to the app's bell. Mandatory = employees must acknowledge to clear it.</div>
+          <label>Title</label>
+          <input id="ntfTitle" placeholder="e.g. Town Hall this Friday 4 PM" />
+          <label>Message</label>
+          <textarea id="ntfBody" rows="3" placeholder="Short description for the notification…"></textarea>
+          <label>Type</label>
+          <div class="typetog" id="ntfType">
+            <button class="on" data-type="normal">🔔 Normal</button>
+            <button class="mand" data-type="mandatory">⚠️ Mandatory</button>
+          </div>
+          <button class="sendbtn" id="ntfSend">Send to feed</button>
+          <div style="font-size:11px;color:var(--mut);margin-top:10px;line-height:1.5">Tip: switch to the <b>App Demo</b> tab and open the bell 🔔 to see it arrive. Mandatory alerts also show a red banner until acknowledged.</div>
+          </div>
+
+          <div class="panelbox" style="margin-top:16px">
+            <h4>🌟 Spotlight &amp; Promote to Social</h4>
+            <div class="ps">Push your best employee posts to Zarthi's LinkedIn / Instagram. Requires employee consent before anything goes public.</div>
+            <div id="promoList"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PUBLIC · LIFE AT ZARTHI ============ -->
+  <section class="view" id="public">
+    <div class="pubwrap">
+      <div class="pub-hero">
+        <div class="eyebrow">Life at Zarthi · Business Sarthi</div>
+        <h2>Real people. Real wins.<br>Told by the team that lives it.</h2>
+        <p>The best moments from our employees' own feed — wins, events and culture — curated, approved, and shared with the world. This is what it feels like to grow with Zarthi.</p>
+        <div class="pub-stats" id="pubStats"></div>
+      </div>
+
+      <div class="pub-sec">
+        <h3>🌟 Culture wall</h3>
+        <div class="ps">Employee posts our team approved &amp; promoted to Zarthi's social channels.</div>
+        <div class="wall" id="cultureWall"></div>
+      </div>
+
+      <div class="pub-sec">
+        <h3>💼 Open roles</h3>
+        <div class="ps">Like what you see? These teams are hiring.</div>
+        <div class="roles" id="rolesList"></div>
+      </div>
+
+      <div class="talent">
+        <h3>Let's connect 🤝</h3>
+        <p>Not ready to apply yet? Join our talent community and we'll reach out when the right role opens up.</p>
+        <form class="tform" id="talentForm" onsubmit="return joinTalent(event)">
+          <input required placeholder="Your name" />
+          <input required type="email" placeholder="Work / personal email" />
+          <select class="full"><option value="">Area of interest…</option><option>Marketing (SEO / Paid / SMM)</option><option>Sales</option><option>Technology</option><option>Other</option></select>
+          <button type="submit">Join the talent community</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FLOW ============ -->
+  <section class="view" id="flow">
+    <div class="flowwrap">
+      <div class="panel">
+        <h2>1 · How a user experiences the feed (Smart Relevance)</h2>
+        <div class="sub">Every employee is tagged by department + specialization. The relevance engine ranks each person's feed.</div>
+        <svg viewBox="0 0 980 300" xmlns="http://www.w3.org/2000/svg" font-family="Poppins,sans-serif">
+          <defs>
+            <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#FFB42A"/></marker>
+          </defs>
+          <rect x="20" y="110" width="150" height="78" rx="14" fill="#113258"/>
+          <text x="95" y="142" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">Employee</text>
+          <text x="95" y="162" fill="#cdd7e6" font-size="11" text-anchor="middle">opens app · logs in</text>
+
+          <rect x="215" y="95" width="180" height="108" rx="14" fill="#fff" stroke="#E8E6E2"/>
+          <text x="305" y="124" fill="#262626" font-size="13" font-weight="700" text-anchor="middle">Profile Tags</text>
+          <text x="305" y="146" fill="#6C6969" font-size="11" text-anchor="middle">Dept: Marketing</text>
+          <text x="305" y="164" fill="#6C6969" font-size="11" text-anchor="middle">Skill: SEO / Paid</text>
+          <text x="305" y="182" fill="#6C6969" font-size="11" text-anchor="middle">Role · Team</text>
+
+          <rect x="440" y="85" width="200" height="128" rx="14" fill="#262626"/>
+          <text x="540" y="116" fill="#FFB42A" font-size="13" font-weight="700" text-anchor="middle">Relevance Engine</text>
+          <text x="540" y="140" fill="#eee" font-size="10.5" text-anchor="middle">matches post tags ↔ user tags</text>
+          <text x="540" y="158" fill="#eee" font-size="10.5" text-anchor="middle">ranks by team + interest</text>
+          <text x="540" y="176" fill="#eee" font-size="10.5" text-anchor="middle">+ company-wide always</text>
+          <text x="540" y="196" fill="#eee" font-size="10.5" text-anchor="middle">+ R&amp;R / newsletter</text>
+
+          <rect x="690" y="40" width="270" height="62" rx="12" fill="#113258"/>
+          <text x="825" y="66" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">Relevant posts (SEO, Paid, SMM)</text>
+          <text x="825" y="86" fill="#9fb4d4" font-size="10.5" text-anchor="middle">shown first</text>
+          <rect x="690" y="118" width="270" height="56" rx="12" fill="#033732"/>
+          <text x="825" y="142" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">Top-5 Leaderboard card</text>
+          <text x="825" y="160" fill="#bfe6d9" font-size="10.5" text-anchor="middle">pinned for everyone</text>
+          <rect x="690" y="190" width="270" height="56" rx="12" fill="#FFB42A"/>
+          <text x="825" y="214" fill="#262626" font-size="12" font-weight="700" text-anchor="middle">Newsletter + Announcements</text>
+          <text x="825" y="232" fill="#6b4e00" font-size="10.5" text-anchor="middle">company-wide</text>
+
+          <line x1="170" y1="149" x2="210" y2="149" stroke="#FFB42A" stroke-width="2.5" marker-end="url(#ar)"/>
+          <line x1="395" y1="149" x2="435" y2="149" stroke="#FFB42A" stroke-width="2.5" marker-end="url(#ar)"/>
+          <line x1="640" y1="120" x2="685" y2="80" stroke="#FFB42A" stroke-width="2.5" marker-end="url(#ar)"/>
+          <line x1="640" y1="149" x2="685" y2="146" stroke="#FFB42A" stroke-width="2.5" marker-end="url(#ar)"/>
+          <line x1="640" y1="178" x2="685" y2="212" stroke="#FFB42A" stroke-width="2.5" marker-end="url(#ar)"/>
+        </svg>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <h2>2 · Post creation flow</h2>
+          <div class="sub">From tap to published, with rich styling.</div>
+          <svg viewBox="0 0 460 360" xmlns="http://www.w3.org/2000/svg" font-family="Poppins,sans-serif">
+            <defs><marker id="ar2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#337D38"/></marker></defs>
+            <rect x="150" y="14" width="160" height="44" rx="12" fill="#FFB42A"/><text x="230" y="41" fill="#262626" font-size="13" font-weight="700" text-anchor="middle">Tap + Create</text>
+            <rect x="120" y="78" width="220" height="44" rx="12" fill="#fff" stroke="#E8E6E2"/><text x="230" y="100" fill="#262626" font-size="12" text-anchor="middle">Pick format</text><text x="230" y="115" fill="#6C6969" font-size="10" text-anchor="middle">text · photo · carousel · video · gif</text>
+            <rect x="120" y="142" width="220" height="50" rx="12" fill="#fff" stroke="#E8E6E2"/><text x="230" y="163" fill="#262626" font-size="12" text-anchor="middle">Style it</text><text x="230" y="179" fill="#6C6969" font-size="10" text-anchor="middle">font · text colour · background</text>
+            <rect x="120" y="212" width="220" height="50" rx="12" fill="#fff" stroke="#E8E6E2"/><text x="230" y="233" fill="#262626" font-size="12" text-anchor="middle">Add media &amp; meta</text><text x="230" y="249" fill="#6C6969" font-size="10" text-anchor="middle">GIF · music · location · #tags</text>
+            <rect x="110" y="282" width="240" height="50" rx="12" fill="#033732"/><text x="230" y="303" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">Auto-tag + Publish</text><text x="230" y="319" fill="#bfe6d9" font-size="10" text-anchor="middle">post tagged by dept → feed</text>
+            <line x1="230" y1="58" x2="230" y2="76" stroke="#337D38" stroke-width="2.5" marker-end="url(#ar2)"/>
+            <line x1="230" y1="122" x2="230" y2="140" stroke="#337D38" stroke-width="2.5" marker-end="url(#ar2)"/>
+            <line x1="230" y1="192" x2="230" y2="210" stroke="#337D38" stroke-width="2.5" marker-end="url(#ar2)"/>
+            <line x1="230" y1="262" x2="230" y2="280" stroke="#337D38" stroke-width="2.5" marker-end="url(#ar2)"/>
+          </svg>
+        </div>
+
+        <div class="panel">
+          <h2>3 · Notifications &amp; mandatory flow</h2>
+          <div class="sub">How a normal vs mandatory notification behaves.</div>
+          <svg viewBox="0 0 460 360" xmlns="http://www.w3.org/2000/svg" font-family="Poppins,sans-serif">
+            <defs><marker id="ar3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#C7413A"/></marker></defs>
+            <rect x="150" y="14" width="160" height="44" rx="12" fill="#262626"/><text x="230" y="33" fill="#FFB42A" font-size="12" font-weight="700" text-anchor="middle">Admin sends</text><text x="230" y="49" fill="#eee" font-size="10" text-anchor="middle">notification</text>
+            <rect x="150" y="80" width="160" height="40" rx="11" fill="#FFB42A"/><text x="230" y="105" fill="#262626" font-size="12" font-weight="700" text-anchor="middle">Bell count +1</text>
+            <rect x="40" y="150" width="170" height="48" rx="11" fill="#113258"/><text x="125" y="171" fill="#fff" font-size="11.5" font-weight="700" text-anchor="middle">Normal</text><text x="125" y="187" fill="#bcc7d8" font-size="9.5" text-anchor="middle">appears in bell list</text>
+            <rect x="250" y="150" width="170" height="48" rx="11" fill="#C7413A"/><text x="335" y="171" fill="#fff" font-size="11.5" font-weight="700" text-anchor="middle">Mandatory</text><text x="335" y="187" fill="#ffd9d6" font-size="9.5" text-anchor="middle">+ red banner on feed</text>
+            <rect x="40" y="226" width="170" height="46" rx="11" fill="#fff" stroke="#E8E6E2"/><text x="125" y="247" fill="#262626" font-size="11" text-anchor="middle">Tap "Mark as read"</text><text x="125" y="263" fill="#6C6969" font-size="9.5" text-anchor="middle">clears the count</text>
+            <rect x="250" y="226" width="170" height="46" rx="11" fill="#fff" stroke="#E9C2BF"/><text x="335" y="247" fill="#C7413A" font-size="11" font-weight="700" text-anchor="middle">Must "Acknowledge"</text><text x="335" y="263" fill="#6C6969" font-size="9.5" text-anchor="middle">then it is removed</text>
+            <rect x="120" y="300" width="220" height="44" rx="11" fill="#337D38"/><text x="230" y="327" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">Cleared ✓</text>
+            <line x1="230" y1="58" x2="230" y2="78" stroke="#C7413A" stroke-width="2.5" marker-end="url(#ar3)"/>
+            <line x1="190" y1="120" x2="135" y2="148" stroke="#C7413A" stroke-width="2.5" marker-end="url(#ar3)"/>
+            <line x1="270" y1="120" x2="325" y2="148" stroke="#C7413A" stroke-width="2.5" marker-end="url(#ar3)"/>
+            <line x1="125" y1="198" x2="125" y2="224" stroke="#C7413A" stroke-width="2.5" marker-end="url(#ar3)"/>
+            <line x1="335" y1="198" x2="335" y2="224" stroke="#C7413A" stroke-width="2.5" marker-end="url(#ar3)"/>
+            <line x1="125" y1="272" x2="200" y2="300" stroke="#337D38" stroke-width="2.5" marker-end="url(#ar2)"/>
+            <line x1="335" y1="272" x2="260" y2="300" stroke="#337D38" stroke-width="2.5" marker-end="url(#ar2)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>4 · System architecture (simple)</h2>
+        <div class="sub">The building blocks behind the app — now including Save, Search &amp; Notifications services.</div>
+        <svg viewBox="0 0 980 320" xmlns="http://www.w3.org/2000/svg" font-family="Poppins,sans-serif">
+          <rect x="20" y="14" width="940" height="46" rx="11" fill="#113258"/><text x="490" y="33" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">Mobile App + Web Admin (Frontend)</text><text x="490" y="50" fill="#9fb4d4" font-size="10.5" text-anchor="middle">React Native · React · Poppins + Mulish</text>
+          <rect x="20" y="74" width="940" height="40" rx="11" fill="#262626"/><text x="490" y="99" fill="#FFB42A" font-size="12" font-weight="700" text-anchor="middle">API Gateway + Auth (SSO / Google login)</text>
+          <g font-size="10.5" text-anchor="middle" font-weight="600">
+            <rect x="20" y="130" width="148" height="58" rx="10" fill="#fff" stroke="#E8E6E2"/><text x="94" y="156" fill="#262626">Feed &amp;</text><text x="94" y="171" fill="#262626">Relevance</text>
+            <rect x="178" y="130" width="148" height="58" rx="10" fill="#fff" stroke="#E8E6E2"/><text x="252" y="156" fill="#262626">Posts &amp;</text><text x="252" y="171" fill="#262626">Media</text>
+            <rect x="336" y="130" width="148" height="58" rx="10" fill="#fff" stroke="#E8E6E2"/><text x="410" y="156" fill="#262626">R&amp;R /</text><text x="410" y="171" fill="#262626">Points</text>
+            <rect x="494" y="130" width="148" height="58" rx="10" fill="#fff" stroke="#E8E6E2"/><text x="568" y="156" fill="#262626">Engage:</text><text x="568" y="171" fill="#262626">like/comment/save</text>
+            <rect x="652" y="130" width="148" height="58" rx="10" fill="#fff" stroke="#E8E6E2"/><text x="726" y="156" fill="#262626">Notifications</text><text x="726" y="171" fill="#6C6969">normal + mandatory</text>
+            <rect x="810" y="130" width="150" height="58" rx="10" fill="#fff" stroke="#E8E6E2"/><text x="885" y="156" fill="#262626">Search</text><text x="885" y="171" fill="#6C6969">posts + people</text>
+            <rect x="178" y="198" width="290" height="48" rx="10" fill="#fff" stroke="#E8E6E2"/><text x="323" y="226" fill="#262626">Profile &amp; Department tags</text>
+            <rect x="494" y="198" width="306" height="48" rx="10" fill="#fff" stroke="#E8E6E2"/><text x="647" y="226" fill="#262626">Newsletter · Analytics · Moderation</text>
+          </g>
+          <rect x="20" y="258" width="600" height="40" rx="11" fill="#033732"/><text x="320" y="283" fill="#fff" font-size="11.5" font-weight="700" text-anchor="middle">Data: PostgreSQL · Redis · Media on S3/CDN · Search index</text>
+          <rect x="630" y="258" width="330" height="40" rx="11" fill="#FFB42A"/><text x="795" y="283" fill="#262626" font-size="11" font-weight="700" text-anchor="middle">Integrations: HRMS · Slack/Email · Push (FCM)</text>
+        </svg>
+      </div>
+
+      <div class="panel">
+        <h2>5 · Department → Specialization → Keywords → What they see</h2>
+        <div class="sub">This table powers the backend relevance filter.</div>
+        <table class="utable">
+          <thead><tr><th>Department</th><th>Specialization</th><th>Auto-tags / keywords</th><th>Feed shows them</th></tr></thead>
+          <tbody>
+            <tr><td><b>Marketing</b></td><td>SEO</td><td>#seo #serp #backlinks #content #aeo</td><td>SEO wins, ranking tips, algorithm updates</td></tr>
+            <tr><td><b>Marketing</b></td><td>Paid Media</td><td>#ppc #roas #meta-ads #google-ads #cpl</td><td>Campaign results, creative tests, budgets</td></tr>
+            <tr><td><b>Marketing</b></td><td>SMM</td><td>#social #reels #engagement #calendar</td><td>Trends, post performance, content calendar</td></tr>
+            <tr><td><b>Sales</b></td><td>Inside / Field</td><td>#pipeline #demo #closed-won #quota #crm</td><td>Deal wins, pitch decks, objection handling</td></tr>
+            <tr><td><b>Technology</b></td><td>Eng / DevOps</td><td>#release #deploy #bug #api #uptime</td><td>Ships, incident notes, tech demos</td></tr>
+            <tr><td><b>Everyone</b></td><td>Company-wide</td><td>#announcement #rnr #event #policy</td><td>R&amp;R, newsletter, leadership notes</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot">Zarthi Pulse · concept demo built for CEO review · brand: Golden Yellow #FFB42A · Poppins + Mulish · all data is illustrative</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------------- BRAND HELPERS ---------------- */
+const DC = {marketing:'#113258',seo:'#113258',paid:'#1d4e89',smm:'#2f6fb0',sales:'#337D38',tech:'#033732',company:'#9A6A00',hr:'#6C6969'};
+const DBG = {marketing:'#e7edf5',seo:'#e7edf5',paid:'#e7edf5',smm:'#e9f0f8',sales:'#e6efe6',tech:'#e1ecea',company:'#FFF4DE',hr:'#efeeee'};
+const AVP = ['#113258','#337D38','#033732','#C7413A','#E89F12','#1d4e89','#6C6969','#2f6fb0'];
+const av = (s)=>{let h=0;for(let i=0;i<s.length;i++)h=s.charCodeAt(i)+((h<<5)-h);return AVP[Math.abs(h)%AVP.length];};
+const inits = (n)=>n.split(' ').map(x=>x[0]).slice(0,2).join('');
+
+/* ---------------- DATA ---------------- */
+const posts = [
+  {id:1,name:'Priya Nair',role:'SEO Lead · Marketing',dept:['marketing','seo'],deptlbl:'SEO',color:'company',time:'2h',
+   text:'🎉 Our pillar page just hit Page 1 for "application modernization India" — 3 months of content + technical fixes paying off! #seo #content',
+   media:{type:'photo',label:'📈 Ranking screenshot',bg:'linear-gradient(135deg,#113258,#337D38)'},likes:42,kudos:12,comments:8,reshares:9,promoted:true,spotlight:true},
+  {id:2,name:'Aman Gupta',role:'Paid Media · Marketing',dept:['marketing','paid'],deptlbl:'Paid Media',color:'marketing',time:'4h',
+   text:'New Meta creative test → CPL down 31% this week. Carousel beat single-image again. Swipe for the breakdown 👇 #ppc #roas',
+   media:{type:'carousel',label:'🎠 3 creatives',bg:'linear-gradient(135deg,#1d4e89,#113258)'},likes:28,kudos:6,comments:5},
+  {id:3,name:'Rohit Sharma',role:'Senior Engineer · Technology',dept:['tech'],deptlbl:'Technology',color:'tech',time:'5h',
+   text:'Shipped v2.3 🚀 — feed loads 40% faster after the caching rework. Demo video inside. #release #api',
+   media:{type:'video',label:'🎬 1:12 demo',bg:'linear-gradient(135deg,#033732,#337D38)'},likes:35,kudos:9,comments:4},
+  {id:4,name:'Sneha Iyer',role:'Account Exec · Sales',dept:['sales'],deptlbl:'Sales',color:'sales',time:'6h',
+   text:'CLOSED WON 🏆 ₹18L annual deal with a logistics client. Huge thanks to the SEO team for the inbound lead! #closed-won #pipeline',
+   banner:{bg:'linear-gradient(135deg,#337D38,#033732)',color:'#fff',font:"Impact,sans-serif"},likes:67,kudos:23,comments:14,reshares:18,promoted:true,spotlight:true},
+  {id:5,name:'Zarthi People Team',role:'HR · Company-wide',dept:['company'],deptlbl:'Announcement',color:'company',time:'8h',
+   text:'📰 The June Pulse Newsletter is live — team wins, new joiners, and the Q3 R&R rewards. Don\'t miss it! #announcement #rnr',
+   media:{type:'gif',label:'GIF 🎉 celebration',bg:'linear-gradient(135deg,#FFB42A,#E89F12)'},likes:54,kudos:4,comments:9},
+  {id:6,name:'Karan Mehta',role:'SMM · Marketing',dept:['marketing','smm'],deptlbl:'SMM',color:'marketing',time:'9h',
+   text:'Our LinkedIn reel crossed 50k views 📱 — the "behind the build" format is working. Doubling down next week. #social #reels',
+   media:{type:'photo',label:'📱 Reel analytics',bg:'linear-gradient(135deg,#2f6fb0,#113258)'},likes:31,kudos:7,comments:6},
+  {id:7,name:'Zarthi Culture Club',role:'Events · Company-wide',dept:['company'],deptlbl:'Event',color:'company',time:'1d',
+   text:'📸 Throwback to our Annual Offsite in Goa — strategy by day, bonfire by night! Full album inside. #event #lifeatzarthi',
+   media:{type:'album',images:['linear-gradient(135deg,#113258,#1d4e89)','linear-gradient(135deg,#337D38,#033732)','linear-gradient(135deg,#FFB42A,#E89F12)','linear-gradient(135deg,#C7413A,#8f2f2a)'],more:8},likes:88,kudos:15,comments:22,reshares:12,promoted:true,spotlight:true}
+];
+
+const leaderboard = [
+  {n:'Sneha Iyer',r:'Sales',p:1240},{n:'Priya Nair',r:'SEO',p:1110},
+  {n:'Rohit Sharma',r:'Technology',p:980},{n:'Aman Gupta',r:'Paid Media',p:870},{n:'Karan Mehta',r:'SMM',p:760}
+];
+
+const users = [
+  {n:'Priya Nair',e:'priya@zarthi.com',d:'Marketing',spec:'SEO',dk:'seo',posts:48,comments:132,kudos:310,kw:['#seo','#serp','#backlinks','#content','#aeo'],badge:'Top Contributor'},
+  {n:'Aman Gupta',e:'aman@zarthi.com',d:'Marketing',spec:'Paid Media',dk:'paid',posts:33,comments:89,kudos:201,kw:['#ppc','#roas','#meta-ads','#google-ads','#cpl'],badge:'Rising Star'},
+  {n:'Karan Mehta',e:'karan@zarthi.com',d:'Marketing',spec:'SMM',dk:'smm',posts:41,comments:76,kudos:188,kw:['#social','#reels','#engagement','#calendar'],badge:''},
+  {n:'Sneha Iyer',e:'sneha@zarthi.com',d:'Sales',spec:'Account Exec',dk:'sales',posts:52,comments:140,kudos:412,kw:['#pipeline','#demo','#closed-won','#quota','#crm'],badge:'Pulse Champion'},
+  {n:'Vikram Rao',e:'vikram@zarthi.com',d:'Sales',spec:'Inside Sales',dk:'sales',posts:19,comments:54,kudos:97,kw:['#leads','#followup','#pitch','#crm'],badge:''},
+  {n:'Rohit Sharma',e:'rohit@zarthi.com',d:'Technology',spec:'Backend Eng',dk:'tech',posts:29,comments:61,kudos:176,kw:['#release','#deploy','#api','#bug','#uptime'],badge:'Bug Slayer'},
+  {n:'Divya Menon',e:'divya@zarthi.com',d:'Technology',spec:'DevOps',dk:'tech',posts:22,comments:48,kudos:120,kw:['#ci-cd','#cloud','#monitoring','#incident'],badge:''},
+  {n:'Anjali Verma',e:'anjali@zarthi.com',d:'HR',spec:'People Ops',dk:'hr',posts:60,comments:210,kudos:95,kw:['#rnr','#announcement','#hiring','#event'],badge:'Culture Keeper'}
+];
+
+const logTemplates = [
+  {ic:'📝',t:'Posted a carousel in <b>{spec}</b>',tm:'2h ago'},
+  {ic:'💬',t:'Commented on Rohit\'s release note',tm:'5h ago'},
+  {ic:'⭐',t:'Gave kudos to Sneha Iyer',tm:'1d ago'},
+  {ic:'🔖',t:'Saved 4 posts to their bucket',tm:'1d ago'},
+  {ic:'📰',t:'Subscribed to the Pulse newsletter',tm:'3d ago'},
+  {ic:'🏆',t:'Reached Top-5 leaderboard',tm:'4d ago'}
+];
+
+let notifications = [
+  {id:101,title:'Updated Leave Policy 2026',body:'All employees must acknowledge the revised leave & WFH policy by Friday.',type:'mandatory',ack:false,time:'1h'},
+  {id:102,title:'Aman Gupta mentioned you in a comment',body:'"Great work on the SEO sprint @you 🙌"',type:'normal',read:false,time:'2h'},
+  {id:103,title:'You reached the Top-5 leaderboard 🏆',body:'You moved up to rank #3 this month. Keep it up!',type:'normal',read:false,time:'1d'},
+  {id:104,title:'InfoSec Training — action required',body:'Complete the security module. Acknowledge to confirm you have seen this notice.',type:'mandatory',ack:false,time:'2d'}
+];
+
+/* ---------------- STATE ---------------- */
+let activeDept='all';
+let likeState={}, kudosState={}, savedState={}, reshareState={};
+
+function postMatches(p,dept){
+  if(dept==='all') return true;
+  if(p.dept.includes('company')) return true;
+  return p.dept.includes(dept);
+}
+
+/* ---------------- FEED ---------------- */
+function renderFeed(){
+  const feed=document.getElementById('feed'); feed.innerHTML='';
+  const list=posts.filter(p=>postMatches(p,activeDept));
+  list.forEach((p,idx)=>{
+    feed.appendChild(postCard(p));
+    if(idx===0) feed.appendChild(leaderboardCard());
+    if(idx===2) feed.appendChild(newsletterCard());
+  });
+  if(list.length===0){
+    const e=document.createElement('div');e.className='empty';
+    e.innerHTML='<span class="big">🗒️</span>No posts for this team yet — be the first to post!';feed.appendChild(e);
+  }
+}
+
+function mediaBlock(m){
+  if(!m) return '';
+  if(m.type==='album') return `<div class="album">${m.images.map((g,i)=>`<div class="atile" style="background:${g}">${(i===3&&m.more)?`<span>+${m.more}</span>`:''}</div>`).join('')}</div>`;
+  let extra='';
+  if(m.type==='carousel') extra='<div class="carousel-dots"><i class="on"></i><i></i><i></i></div>';
+  if(m.type==='video') extra='<div class="play">▶</div>';
+  return `<div class="media" style="background:${m.bg}"><span class="lbl">${m.label}</span>${extra}</div>`;
+}
+function postInner(p){
+  const col=DC[p.color]||'#113258', bg=DBG[p.color]||'#e7edf5';
+  let media=p.banner?`<div class="post-text-banner" style="background:${p.banner.bg};color:${p.banner.color};font-family:${p.banner.font}">${p.text}</div>`:'';
+  media+=mediaBlock(p.media);
+  return `
+    <div class="post-h">
+      <div class="av" style="background:${av(p.name)}">${inits(p.name)}</div>
+      <div>
+        <div class="nm">${p.name} ${p.spotlight?'<span class="spot">★ SPOTLIGHT</span>':''}</div>
+        <div class="mt">${p.role} · ${p.time} <span class="pill" style="background:${bg};color:${col}">${p.deptlbl}</span></div>
+      </div>
+    </div>
+    ${p.banner?'':`<div class="post-body">${p.text}</div>`}
+    ${media}`;
+}
+function postCard(p){
+  const c=document.createElement('div');c.className='card';
+  const liked=likeState[p.id], kud=kudosState[p.id], sav=savedState[p.id], rsh=reshareState[p.id];
+  if(p.reshareOf){
+    c.innerHTML=`<div class="reshare-tag">🔁 <b>${p.name}</b> reshared this</div><div class="embed">${postInner(p.reshareOf)}</div>`;
+    return c;
+  }
+  c.innerHTML=postInner(p)+`
+    <div class="post-meta">❤️ ${p.likes+(liked?1:0)} · ⭐ ${p.kudos+(kud?1:0)} kudos · 💬 ${p.comments} · 🔁 ${(p.reshares||0)+(rsh?1:0)}${sav?' · 🔖 saved':''}${p.promoted?' · 🌐 on Zarthi social':''}</div>
+    <div class="actions">
+      <button class="act ${liked?'liked':''}" data-like="${p.id}">${liked?'❤️':'🤍'} Like</button>
+      <button class="act ${kud?'kudos':''}" data-kudos="${p.id}">⭐ Kudos</button>
+      <button class="act ${rsh?'reshared':''}" data-reshare="${p.id}">🔁 ${rsh?'Reshared':'Reshare'}</button>
+      <button class="act ${sav?'saved':''}" data-save="${p.id}">${sav?'🔖':'📑'} ${sav?'Saved':'Save'}</button>
+    </div>`;
+  return c;
+}
+
+function leaderboardCard(){
+  const c=document.createElement('div');c.className='card lb';
+  c.innerHTML=`<div class="lb-h"><b>🏆 R&amp;R · Top 5 this month</b><span class="live">LIVE</span></div>
+    ${leaderboard.map((l,i)=>`
+      <div class="lb-row">
+        <span class="rank" style="background:${i===0?'#FFB42A':i===1?'#cdd7e6':i===2?'#E89F12':'rgba(255,255,255,.14)'};color:${i<3?'#262626':'#fff'}">${i+1}</span>
+        <div class="av" style="width:29px;height:29px;font-size:11px;background:${av(l.n)}">${inits(l.n)}</div>
+        <div><div class="nm">${l.n}</div><div class="ro">${l.r}</div></div>
+        <span class="pts">${l.p} pts</span>
+      </div>`).join('')}
+    <div class="lb-cta"><button onclick="toast('Kudos sent! <b>+10 points</b> ⭐')">⭐ Give kudos to a teammate</button></div>`;
+  return c;
+}
+
+function newsletterCard(){
+  const c=document.createElement('div');c.className='card nl';
+  c.innerHTML=`<div class="inner"><b>📰 Pulse Newsletter — June Edition</b>
+    <p>Team wins, new joiners & Q3 R&R rewards, delivered to your inbox every month.</p>
+    <button class="nlbtn" id="nlbtn">Subscribe</button></div>`;
+  return c;
+}
+
+/* ---------------- SAVED ---------------- */
+function renderSaved(){
+  const body=document.getElementById('savedBody');
+  const saved=posts.filter(p=>savedState[p.id]);
+  document.getElementById('savedCount').textContent=saved.length?`${saved.length} saved`:'';
+  if(!saved.length){body.innerHTML='<div class="empty"><span class="big">🔖</span>No saved posts yet.<br>Tap <b>Save</b> on any post to keep it here.</div>';return;}
+  body.innerHTML='';
+  saved.forEach(p=>{
+    const col=DC[p.color]||'#113258', bg=DBG[p.color]||'#e7edf5';
+    const d=document.createElement('div');d.className='card';d.style.marginBottom='11px';
+    d.innerHTML=`<div class="post-h" style="padding:11px 12px">
+        <div class="av" style="width:34px;height:34px;font-size:12px;background:${av(p.name)}">${inits(p.name)}</div>
+        <div><div class="nm" style="font-size:12.5px">${p.name}</div><div class="mt"><span class="pill" style="background:${bg};color:${col}">${p.deptlbl}</span> · ${p.time}</div></div>
+      </div>
+      <div class="post-body" style="font-size:12.5px">${p.text}</div>
+      <div class="actions"><button class="act saved" data-unsave="${p.id}">🔖 Remove from saved</button></div>`;
+    body.appendChild(d);
+  });
+}
+
+/* ---------------- SEARCH ---------------- */
+function renderSearch(q){
+  const box=document.getElementById('searchResults');
+  q=(q||'').trim().toLowerCase();
+  if(!q){box.innerHTML='<div class="empty"><span class="big">🔍</span>Search posts by text or #tag,<br>and people by name or email.</div>';return;}
+  const pp=users.filter(u=>u.n.toLowerCase().includes(q)||u.e.toLowerCase().includes(q)||u.spec.toLowerCase().includes(q));
+  const ps=posts.filter(p=>p.text.toLowerCase().includes(q)||p.name.toLowerCase().includes(q)||p.deptlbl.toLowerCase().includes(q));
+  let html='';
+  if(pp.length){html+='<div class="sec-lbl">People · '+pp.length+'</div>';
+    pp.forEach(u=>{const col=DC[u.dk]||'#113258',bg=DBG[u.dk]||'#e7edf5';
+      html+=`<div class="res-person"><div class="av" style="width:38px;height:38px;font-size:13px;background:${av(u.n)}">${inits(u.n)}</div>
+        <div><div class="nm">${u.n}</div><div class="em">${u.e}</div></div>
+        <span class="tag" style="background:${bg};color:${col}">${u.spec}</span></div>`;});}
+  if(ps.length){html+='<div class="sec-lbl">Posts · '+ps.length+'</div>';
+    ps.forEach(p=>{const col=DC[p.color]||'#113258',bg=DBG[p.color]||'#e7edf5';
+      html+=`<div class="res-post" data-openpost="${p.id}"><div class="who"><div class="av" style="width:24px;height:24px;font-size:10px;background:${av(p.name)}">${inits(p.name)}</div>${p.name} <span class="pill" style="background:${bg};color:${col}">${p.deptlbl}</span></div>${p.text}</div>`;});}
+  if(!html) html='<div class="empty"><span class="big">🤷</span>No matches for "<b>'+q+'</b>"</div>';
+  box.innerHTML=html;
+}
+
+/* ---------------- NOTIFICATIONS ---------------- */
+function notifCount(){return notifications.filter(n=>n.type==='mandatory'?!n.ack:!n.read).length;}
+function firstMandatory(){return notifications.find(n=>n.type==='mandatory'&&!n.ack);}
+
+function refreshBell(){
+  const c=notifCount(); const b=document.getElementById('bellBadge');
+  b.textContent=c; b.style.display=c?'grid':'none';
+  // banner
+  const m=firstMandatory(); const ban=document.getElementById('mbanner');
+  if(m){ban.classList.add('show');document.getElementById('mbannerTxt').innerHTML=`<b>Action required</b>${m.title}`;ban.dataset.id=m.id;}
+  else ban.classList.remove('show');
+}
+
+function renderNotif(){
+  const body=document.getElementById('notifBody');
+  document.getElementById('notifMeta').textContent=notifCount()?notifCount()+' new':'all clear';
+  if(!notifications.length){body.innerHTML='<div class="empty"><span class="big">🔔</span>You\'re all caught up!</div>';return;}
+  body.innerHTML='';
+  notifications.forEach(n=>{
+    const d=document.createElement('div');
+    const mand=n.type==='mandatory';
+    const unread=mand?!n.ack:!n.read;
+    d.className='ntf'+(mand?' mand':'')+(unread&&!mand?' unread':'')+((!mand&&n.read)?' read-done':'');
+    const ic=mand?'⚠️':(n.title.includes('🏆')?'🏆':'💬');
+    const icbg=mand?'#FBE3E1':'#FFF4DE';
+    let row='';
+    if(mand && !n.ack) row=`<div class="nrow"><button class="nbtn ack" data-ack="${n.id}">✓ Acknowledge &amp; remove</button></div>`;
+    else if(!mand && !n.read) row=`<div class="nrow"><button class="nbtn read" data-read="${n.id}">Mark as read</button><button class="nbtn dismiss" data-dismiss="${n.id}">Dismiss</button></div>`;
+    else row=`<div class="nrow"><button class="nbtn dismiss" data-dismiss="${n.id}">Dismiss</button></div>`;
+    d.innerHTML=`<div class="nic" style="background:${icbg}">${ic}</div>
+      <div class="nbody">
+        <div class="ntitle">${n.title} ${mand?'<span class="mtag">MANDATORY</span>':''}</div>
+        <div class="ntime">${n.time} ago</div>
+        ${n.body?`<div class="ndesc">${n.body}</div>`:''}
+        ${row}
+      </div>`;
+    body.appendChild(d);
+  });
+}
+
+/* ---------------- OVERLAYS ---------------- */
+function openOv(id){document.querySelectorAll('.overlay').forEach(o=>o.classList.remove('open'));document.getElementById(id).classList.add('open');}
+function closeOv(id){document.getElementById(id).classList.remove('open');}
+
+document.getElementById('btnSearch').onclick=()=>{openOv('searchPanel');renderSearch('');document.getElementById('searchInput').focus();};
+document.getElementById('btnSaved').onclick=()=>{openOv('savedPanel');renderSaved();};
+document.getElementById('btnBell').onclick=()=>{openOv('notifPanel');renderNotif();};
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeOv(b.dataset.close));
+document.getElementById('searchInput').addEventListener('input',e=>renderSearch(e.target.value));
+
+document.getElementById('mbannerAck').onclick=()=>{
+  const id=+document.getElementById('mbanner').dataset.id;
+  const n=notifications.find(x=>x.id===id); if(n){n.ack=true;}
+  refreshBell();toast('Acknowledged ✓ — notice cleared');
+};
+
+/* notif panel actions */
+document.getElementById('notifBody').addEventListener('click',e=>{
+  const a=e.target.closest('[data-ack]'),r=e.target.closest('[data-read]'),x=e.target.closest('[data-dismiss]');
+  if(a){const n=notifications.find(z=>z.id===+a.dataset.ack);n.ack=true;renderNotif();refreshBell();toast('Acknowledged ✓ — removed');}
+  if(r){const n=notifications.find(z=>z.id===+r.dataset.read);n.read=true;renderNotif();refreshBell();toast('Marked as read');}
+  if(x){notifications=notifications.filter(z=>z.id!==+x.dataset.dismiss);renderNotif();refreshBell();toast('Dismissed');}
+});
+
+/* search → open post (jump to feed) */
+document.getElementById('searchResults').addEventListener('click',e=>{
+  const p=e.target.closest('[data-openpost]'); if(!p)return;
+  closeOv('searchPanel');activeDept='all';
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));document.querySelector('.chip[data-dept=all]').classList.add('active');
+  renderFeed();toast('Jumped to post in feed');
+});
+
+/* saved panel unsave */
+document.getElementById('savedBody').addEventListener('click',e=>{
+  const u=e.target.closest('[data-unsave]'); if(!u)return;
+  savedState[+u.dataset.unsave]=false;renderSaved();renderFeed();toast('Removed from saved');
+});
+
+/* ---------------- COMPOSER ---------------- */
+const composeArea=document.getElementById('composeArea');
+let curFmt='text',curFont='var(--head)',curTextColor='#ffffff',curBg='linear-gradient(135deg,#113258,#1d4e89)';
+let meta={gif:false,music:false,location:false,tag:false};
+const textPalette=['#ffffff','#262626','#FFB42A','#C7413A','#337D38','#113258'];
+const bgPalette=['linear-gradient(135deg,#113258,#1d4e89)','linear-gradient(135deg,#337D38,#033732)','linear-gradient(135deg,#FFB42A,#E89F12)','linear-gradient(135deg,#C7413A,#8f2f2a)','linear-gradient(135deg,#262626,#000)','#F4F4F4'];
+
+function buildSwatches(){
+  const tc=document.getElementById('textColors');
+  textPalette.forEach((c,i)=>{const s=document.createElement('div');s.className='sw'+(i===0?' sel':'');s.style.background=c;s.onclick=()=>{curTextColor=c;tc.querySelectorAll('.sw').forEach(x=>x.classList.remove('sel'));s.classList.add('sel');applyCompose();};tc.appendChild(s);});
+  const bc=document.getElementById('bgColors');
+  bgPalette.forEach((c,i)=>{const s=document.createElement('div');s.className='sw'+(i===0?' sel':'');s.style.background=c;s.onclick=()=>{curBg=c;bc.querySelectorAll('.sw').forEach(x=>x.classList.remove('sel'));s.classList.add('sel');applyCompose();};bc.appendChild(s);});
+}
+function applyCompose(){composeArea.style.fontFamily=curFont;composeArea.style.color=curTextColor;composeArea.style.background=(curFmt==='text')?curBg:'#F4F4F4';composeArea.style.minHeight=(curFmt==='text')?'120px':'70px';if(curFmt!=='text')composeArea.style.color=curTextColor==='#ffffff'?'#262626':curTextColor;}
+function updateHint(){const bits=[];if(meta.gif)bits.push('GIF 🎞️');if(meta.music)bits.push('Music 🎵');if(meta.location)bits.push('📍 Zarthi HQ');if(meta.tag)bits.push('#tagged');document.getElementById('metaHint').textContent=bits.length?('Attached: '+bits.join(' · ')):'';}
+
+document.getElementById('fmtrow').onclick=e=>{const b=e.target.closest('.fmt');if(!b)return;curFmt=b.dataset.fmt;document.querySelectorAll('.fmt').forEach(x=>x.classList.remove('on'));b.classList.add('on');composeArea.dataset.ph=curFmt==='text'?'Type your text post…':'Add a caption…';applyCompose();};
+document.getElementById('fontrow').onclick=e=>{const b=e.target.closest('.fpick');if(!b)return;curFont=b.dataset.font;document.querySelectorAll('.fpick').forEach(x=>x.classList.remove('on'));b.classList.add('on');applyCompose();};
+document.querySelector('#composer .toolbar').onclick=e=>{const b=e.target.closest('.tool');if(!b)return;const t=b.dataset.tool;meta[t]=!meta[t];b.classList.toggle('on');updateHint();};
+
+document.getElementById('fab').onclick=()=>{openOv('composer');composeArea.innerHTML='';applyCompose();updateHint();composeArea.focus();};
+
+document.getElementById('postBtn').onclick=()=>{
+  const txt=composeArea.textContent.trim()||('Shared a new '+curFmt+' post');
+  const np={id:Date.now(),name:'You (Demo User)',role:'Marketing · SEO',dept:['marketing','seo'],deptlbl:'SEO',color:'marketing',time:'now',text:txt,likes:0,kudos:0,comments:0};
+  if(curFmt==='text') np.banner={bg:curBg,color:curTextColor,font:curFont};
+  else{const map={photo:'🖼 Your photo',carousel:'🎠 Your carousel',video:'🎬 Your video',gif:'GIF 🎞️'};np.media={type:curFmt,label:map[curFmt],bg:curBg.includes('gradient')?curBg:'linear-gradient(135deg,#113258,#1d4e89)'};}
+  posts.unshift(np);closeOv('composer');
+  activeDept='all';document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));document.querySelector('.chip[data-dept=all]').classList.add('active');
+  renderFeed();document.getElementById('feed').scrollTop=0;toast('Posted to feed! Auto-tagged <b>#seo</b> 🎉');
+  Object.keys(meta).forEach(k=>meta[k]=false);document.querySelectorAll('#composer .tool').forEach(x=>x.classList.remove('on'));
+};
+
+/* ---------------- FEED INTERACTIONS ---------------- */
+document.getElementById('feed').addEventListener('click',e=>{
+  const lk=e.target.closest('[data-like]'),kd=e.target.closest('[data-kudos]'),sv=e.target.closest('[data-save]');
+  const rs=e.target.closest('[data-reshare]'),nl=e.target.closest('#nlbtn');
+  if(lk){const id=+lk.dataset.like;likeState[id]=!likeState[id];renderFeed();toast(likeState[id]?'Liked ❤️':'Unliked');}
+  if(kd){const id=+kd.dataset.kudos;if(!kudosState[id]){kudosState[id]=true;renderFeed();toast('Kudos given! <b>+10 pts</b> ⭐');}}
+  if(sv){const id=+sv.dataset.save;savedState[id]=!savedState[id];renderFeed();toast(savedState[id]?'Saved to your bucket 🔖':'Removed from saved');}
+  if(rs){const id=+rs.dataset.reshare;if(!reshareState[id]){reshareState[id]=true;const orig=posts.find(x=>x.id===id);posts.unshift({id:Date.now(),name:'You (Demo User)',reshareOf:orig,dept:(orig.dept||['company']).slice(),time:'now'});const feed=document.getElementById('feed');activeDept='all';document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));document.querySelector('.chip[data-dept=all]').classList.add('active');renderFeed();feed.scrollTop=0;toast('Reshared to your feed 🔁');}}
+  if(nl){nl.textContent='✓ Subscribed';nl.classList.add('done');toast('Subscribed to Pulse newsletter 📰');}
+});
+
+/* ---------------- DEPT FILTER ---------------- */
+document.getElementById('deptbar').addEventListener('click',e=>{
+  const c=e.target.closest('.chip');if(!c)return;
+  document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');
+  activeDept=c.dataset.dept;renderFeed();
+  if(activeDept!=='all')toast('Feed filtered for '+c.textContent.trim());
+});
+
+/* ---------------- ADMIN ---------------- */
+function renderUsers(filter='',dept='all'){
+  const tb=document.getElementById('userRows');tb.innerHTML='';const f=filter.toLowerCase();
+  users.filter(u=>(u.n.toLowerCase().includes(f)||u.e.toLowerCase().includes(f))&&(dept==='all'||(dept==='marketing'?['seo','paid','smm'].includes(u.dk):u.dk===dept)))
+    .forEach(u=>{const col=DC[u.dk]||'#113258',bg=DBG[u.dk]||'#e7edf5';
+      const tr=document.createElement('tr');
+      tr.innerHTML=`<td><div class="u"><div class="av" style="width:34px;height:34px;font-size:12px;background:${av(u.n)}">${inits(u.n)}</div><div><div style="font-weight:700;font-family:var(--head)">${u.n}</div><div class="em">${u.e}</div></div></div></td>
+        <td>${u.d}</td><td><span class="badge" style="background:${bg};color:${col}">${u.spec}</span></td>
+        <td>${u.posts}</td><td>${u.comments}</td><td><b style="color:var(--gold-d)">${u.kudos}</b></td>`;
+      tr.onclick=()=>showProfile(u);tb.appendChild(tr);});
+}
+function showProfile(u){
+  const col=DC[u.dk]||'#113258',bg=DBG[u.dk]||'#e7edf5';const p=document.getElementById('profile');
+  const logs=logTemplates.map(l=>`<div class="logrow"><div class="ic">${l.ic}</div><div>${l.t.replace('{spec}',u.spec).replace('{d}',u.d)}</div><div class="tm">${l.tm}</div></div>`).join('');
+  p.innerHTML=`<div class="phead"><div class="big" style="background:${av(u.n)}">${inits(u.n)}</div>
+      <div><h3>${u.n} ${u.badge?`<span class="badge" style="background:var(--gold);color:#262626;margin-left:6px">${u.badge}</span>`:''}</h3>
+      <div class="role">${u.e} · ${u.d} → <b style="color:${col}">${u.spec}</b></div></div></div>
+    <div class="stats">
+      <div class="stat"><div class="n">${u.posts}</div><div class="l">Posts on feed</div></div>
+      <div class="stat"><div class="n">${u.comments}</div><div class="l">Comments</div></div>
+      <div class="stat"><div class="n" style="color:var(--gold-d)">${u.kudos}</div><div class="l">Kudos received</div></div>
+      <div class="stat"><div class="n">${Math.round((u.posts+u.comments)/30)}</div><div class="l">Avg actions/day</div></div></div>
+    <div class="lbl-sm" style="color:var(--mut)">Department keyword map (relevance tags)</div>
+    <div class="kwrap">${u.kw.map(k=>`<span class="kw" style="border-color:${col}44;color:${col}">${k}</span>`).join('')}</div>
+    <div class="lbl-sm" style="color:var(--mut);margin-top:18px">Recent activity</div>${logs}`;
+  p.classList.add('show');p.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+document.getElementById('userSearch').addEventListener('input',e=>renderUsers(e.target.value,document.getElementById('deptFilter').value));
+document.getElementById('deptFilter').addEventListener('change',e=>renderUsers(document.getElementById('userSearch').value,e.target.value));
+
+/* admin send notification */
+let ntfType='normal';
+document.getElementById('ntfType').onclick=e=>{const b=e.target.closest('button');if(!b)return;ntfType=b.dataset.type;document.querySelectorAll('#ntfType button').forEach(x=>x.classList.remove('on'));b.classList.add('on');};
+document.getElementById('ntfSend').onclick=()=>{
+  const t=document.getElementById('ntfTitle').value.trim()||'Untitled notification';
+  const b=document.getElementById('ntfBody').value.trim();
+  const n={id:Date.now(),title:t,body:b,type:ntfType,time:'now'};
+  if(ntfType==='mandatory')n.ack=false;else n.read=false;
+  notifications.unshift(n);refreshBell();
+  document.getElementById('ntfTitle').value='';document.getElementById('ntfBody').value='';
+  toast((ntfType==='mandatory'?'⚠️ Mandatory':'🔔 Normal')+' notification sent to feed');
+};
+
+/* ---------------- SPOTLIGHT / PROMOTE TO SOCIAL ---------------- */
+function eng(p){return (p.likes||0)+(p.kudos||0)+(p.reshares||0);}
+function renderPromo(){
+  const box=document.getElementById('promoList');
+  const top=posts.filter(p=>!p.reshareOf).sort((a,b)=>eng(b)-eng(a)).slice(0,5);
+  box.innerHTML=top.map(p=>{
+    const snip=(p.text||'').slice(0,68)+((p.text||'').length>68?'…':'');
+    if(p.promoted) return `<div class="promo-post done"><div class="pp-txt">${snip}</div><div class="promo-live">✓ Live on Zarthi LinkedIn + Instagram</div></div>`;
+    return `<div class="promo-post">
+        <div class="pp-txt">${snip}</div>
+        <div class="eng">❤️ ${p.likes} · ⭐ ${p.kudos} · 🔁 ${p.reshares||0} engagement</div>
+        <label class="consent"><input type="checkbox" data-consent="${p.id}"/> ${p.name.split(' ')[0]} consents to share this externally</label>
+        <button class="promobtn" data-promote="${p.id}" disabled>🌐 Promote to social</button>
+      </div>`;
+  }).join('');
+}
+document.getElementById('promoList').addEventListener('change',e=>{
+  const c=e.target.closest('[data-consent]'); if(!c)return;
+  c.closest('.promo-post').querySelector('[data-promote]').disabled=!c.checked;
+});
+document.getElementById('promoList').addEventListener('click',e=>{
+  const b=e.target.closest('[data-promote]'); if(!b||b.disabled)return;
+  const p=posts.find(x=>x.id===+b.dataset.promote); p.promoted=true;p.spotlight=true;
+  renderPromo();renderFeed();renderPublic();toast('🌐 Scheduled to Zarthi LinkedIn + Instagram');
+});
+
+/* ---------------- PUBLIC · LIFE AT ZARTHI ---------------- */
+const openRoles=[
+  {t:'Senior SEO Strategist',m:'Marketing · Hybrid · Bengaluru'},
+  {t:'Performance Marketing Lead',m:'Marketing · Remote'},
+  {t:'Enterprise Account Executive',m:'Sales · Mumbai'},
+  {t:'Backend Engineer (Node.js)',m:'Technology · Remote'}
+];
+function renderPublic(){
+  const promoted=posts.filter(p=>p.promoted&&!p.reshareOf);
+  document.getElementById('pubStats').innerHTML=`
+    <div class="s"><b>120+</b><span>Team members</span></div>
+    <div class="s"><b>${promoted.length}</b><span>Stories shared</span></div>
+    <div class="s"><b>20+</b><span>Events a year</span></div>
+    <div class="s"><b>4.6★</b><span>Team rating</span></div>`;
+  const wall=document.getElementById('cultureWall');
+  if(!promoted.length){wall.innerHTML='<div class="empty">No promoted stories yet — promote posts from the Admin Console.</div>';}
+  else wall.innerHTML=promoted.map(p=>{
+    const bg=(p.media&&p.media.bg)||(p.banner&&p.banner.bg)||(p.media&&p.media.images&&p.media.images[0])||'linear-gradient(135deg,#113258,#1d4e89)';
+    const lbl=p.media?(p.media.type==='album'?'📸 Event album':p.media.label):'✍️ Team post';
+    const txt=(p.text||'').replace(/#\w[\w-]*/g,'').trim().slice(0,108);
+    return `<div class="tile"><div class="tmedia" style="background:${bg}">${lbl}</div>
+      <div class="tbody"><div class="tw">${txt}…</div><div class="tm">${p.name}<span class="src">↗ LinkedIn</span></div></div></div>`;
+  }).join('');
+  document.getElementById('rolesList').innerHTML=openRoles.map(r=>`<div class="role"><div><div class="rt">${r.t}</div><div class="rm">${r.m}</div></div><button class="rb" onclick="toast('Application form (demo)')">Apply</button></div>`).join('');
+}
+function joinTalent(e){e.preventDefault();e.target.reset();toast("🎉 You're in! We'll be in touch.");return false;}
+
+/* ---------------- COMMERCE / STORE ---------------- */
+const products=[
+  {id:'tshirt',n:'Zarthi T-Shirt',p:699,e:'👕',bg:'linear-gradient(135deg,#113258,#1d4e89)'},
+  {id:'bottle',n:'Steel Water Bottle',p:499,e:'🍶',bg:'linear-gradient(135deg,#337D38,#033732)'},
+  {id:'bag',n:'Laptop Backpack',p:1299,e:'🎒',bg:'linear-gradient(135deg,#262626,#555)'},
+  {id:'pen',n:'Signature Pen',p:149,e:'🖊️',bg:'linear-gradient(135deg,#FFB42A,#E89F12)'},
+  {id:'hoodie',n:'Zarthi Hoodie',p:1499,e:'🧥',bg:'linear-gradient(135deg,#113258,#337D38)'},
+  {id:'cap',n:'Brand Cap',p:399,e:'🧢',bg:'linear-gradient(135deg,#C7413A,#8f2f2a)'},
+  {id:'mug',n:'Coffee Mug',p:349,e:'☕',bg:'linear-gradient(135deg,#6C6969,#262626)'},
+  {id:'notebook',n:'Notebook + Sticker Pack',p:249,e:'📓',bg:'linear-gradient(135deg,#1d4e89,#113258)'}
+];
+let cart={}, storeView='grid';
+function cartQty(){return Object.values(cart).reduce((a,b)=>a+b,0);}
+function cartTotal(){return products.reduce((s,p)=>s+(cart[p.id]||0)*p.p,0);}
+function refreshCartBadges(){
+  const q=cartQty();
+  const cb=document.getElementById('cartBadge');cb.textContent=q;cb.style.display=q?'grid':'none';
+  const cc=document.getElementById('cartCount');cc.textContent=q;cc.style.display=q?'grid':'none';
+}
+function renderStore(){
+  const body=document.getElementById('storeBody');
+  if(storeView==='cart'){
+    const items=products.filter(p=>cart[p.id]);
+    if(!items.length){body.innerHTML='<div class="empty"><span class="big">🛒</span>Your cart is empty.<br>Add some Zarthi merch!</div>';return;}
+    body.innerHTML=items.map(p=>`<div class="cart-row"><div class="ci" style="background:${p.bg}">${p.e}</div>
+      <div><div class="cn">${p.n}</div><div class="cpp">₹${p.p}</div></div>
+      <div class="qty"><button data-dec="${p.id}">−</button><b>${cart[p.id]}</b><button data-inc="${p.id}">+</button></div></div>`).join('')
+      +`<div class="cart-total"><span class="tt">Total · ${cartQty()} item(s)</span><span class="tv">₹${cartTotal()}</span></div>
+      <button class="checkout" id="checkoutBtn">Checkout</button>
+      <div class="store-note">Demo store · pay online or <b>redeem with Pulse points ⭐</b> earned from kudos &amp; engagement.</div>`;
+  }else{
+    body.innerHTML=`<div class="store-grid">${products.map(p=>`<div class="prod"><div class="pimg" style="background:${p.bg}">${p.e}</div>
+      <div class="pb"><div class="pn">${p.n}</div><div class="pp">₹${p.p}</div>
+      <button class="padd" data-add="${p.id}">Add to cart</button></div></div>`).join('')}</div>
+      <div class="store-note">Official Zarthi merchandise · ships pan-India · earn Pulse points on every order.</div>`;
+  }
+}
+document.getElementById('btnStore').onclick=()=>{storeView='grid';openOv('storePanel');renderStore();};
+document.getElementById('cartToggle').onclick=()=>{storeView=storeView==='cart'?'grid':'cart';renderStore();};
+document.getElementById('storeBody').addEventListener('click',e=>{
+  const a=e.target.closest('[data-add]'),inc=e.target.closest('[data-inc]'),dec=e.target.closest('[data-dec]'),co=e.target.closest('#checkoutBtn');
+  if(a){cart[a.dataset.add]=(cart[a.dataset.add]||0)+1;refreshCartBadges();toast('Added to cart 🛍️');}
+  if(inc){cart[inc.dataset.inc]++;renderStore();refreshCartBadges();}
+  if(dec){const id=dec.dataset.dec;cart[id]--;if(cart[id]<=0)delete cart[id];renderStore();refreshCartBadges();}
+  if(co){cart={};refreshCartBadges();storeView='grid';renderStore();toast('🎉 Order placed! (demo)');}
+});
+
+/* ---------------- TABS ---------------- */
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(t.dataset.view).classList.add('active');
+  if(t.dataset.view==='app')refreshBell();
+  if(t.dataset.view==='admin')renderPromo();
+  if(t.dataset.view==='public')renderPublic();
+});
+
+/* ---------------- TOAST ---------------- */
+let toastTimer;
+function toast(msg){const t=document.getElementById('toast');t.innerHTML=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2100);}
+
+/* init */
+buildSwatches();applyCompose();renderFeed();renderUsers();refreshBell();renderPromo();renderPublic();refreshCartBadges();
+</script>
+</body>
+</html>
