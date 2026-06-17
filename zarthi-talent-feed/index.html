@@ -359,7 +359,6 @@
     <div class="tabs">
       <button class="tab active" data-view="app">📱 App Demo</button>
       <button class="tab" data-view="admin">🛠️ Admin Console</button>
-      <button class="tab" data-view="public">🌐 Life at Zarthi</button>
       <button class="tab" data-view="flow">🔀 Flow &amp; Architecture</button>
     </div>
   </header>
@@ -554,41 +553,6 @@
             <div id="promoList"></div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PUBLIC · LIFE AT ZARTHI ============ -->
-  <section class="view" id="public">
-    <div class="pubwrap">
-      <div class="pub-hero">
-        <div class="eyebrow">Life at Zarthi · Business Sarthi</div>
-        <h2>Real people. Real wins.<br>Told by the team that lives it.</h2>
-        <p>The best moments from our employees' own feed — wins, events and culture — curated, approved, and shared with the world. This is what it feels like to grow with Zarthi.</p>
-        <div class="pub-stats" id="pubStats"></div>
-      </div>
-
-      <div class="pub-sec">
-        <h3>🌟 Culture wall</h3>
-        <div class="ps">Employee posts our team approved &amp; promoted to Zarthi's social channels.</div>
-        <div class="wall" id="cultureWall"></div>
-      </div>
-
-      <div class="pub-sec">
-        <h3>💼 Open roles</h3>
-        <div class="ps">Like what you see? These teams are hiring.</div>
-        <div class="roles" id="rolesList"></div>
-      </div>
-
-      <div class="talent">
-        <h3>Let's connect 🤝</h3>
-        <p>Not ready to apply yet? Join our talent community and we'll reach out when the right role opens up.</p>
-        <form class="tform" id="talentForm" onsubmit="return joinTalent(event)">
-          <input required placeholder="Your name" />
-          <input required type="email" placeholder="Work / personal email" />
-          <select class="full"><option value="">Area of interest…</option><option>Marketing (SEO / Paid / SMM)</option><option>Sales</option><option>Technology</option><option>Other</option></select>
-          <button type="submit">Join the talent community</button>
-        </form>
       </div>
     </div>
   </section>
@@ -1112,35 +1076,8 @@ document.getElementById('promoList').addEventListener('change',e=>{
 document.getElementById('promoList').addEventListener('click',e=>{
   const b=e.target.closest('[data-promote]'); if(!b||b.disabled)return;
   const p=posts.find(x=>x.id===+b.dataset.promote); p.promoted=true;p.spotlight=true;
-  renderPromo();renderFeed();renderPublic();toast('🌐 Scheduled to Zarthi LinkedIn + Instagram');
+  renderPromo();renderFeed();toast('🌐 Scheduled to Zarthi LinkedIn + Instagram');
 });
-
-/* ---------------- PUBLIC · LIFE AT ZARTHI ---------------- */
-const openRoles=[
-  {t:'Senior SEO Strategist',m:'Marketing · Hybrid · Bengaluru'},
-  {t:'Performance Marketing Lead',m:'Marketing · Remote'},
-  {t:'Enterprise Account Executive',m:'Sales · Mumbai'},
-  {t:'Backend Engineer (Node.js)',m:'Technology · Remote'}
-];
-function renderPublic(){
-  const promoted=posts.filter(p=>p.promoted&&!p.reshareOf);
-  document.getElementById('pubStats').innerHTML=`
-    <div class="s"><b>120+</b><span>Team members</span></div>
-    <div class="s"><b>${promoted.length}</b><span>Stories shared</span></div>
-    <div class="s"><b>20+</b><span>Events a year</span></div>
-    <div class="s"><b>4.6★</b><span>Team rating</span></div>`;
-  const wall=document.getElementById('cultureWall');
-  if(!promoted.length){wall.innerHTML='<div class="empty">No promoted stories yet — promote posts from the Admin Console.</div>';}
-  else wall.innerHTML=promoted.map(p=>{
-    const bg=(p.media&&p.media.bg)||(p.banner&&p.banner.bg)||(p.media&&p.media.images&&p.media.images[0])||'linear-gradient(135deg,#113258,#1d4e89)';
-    const lbl=p.media?(p.media.type==='album'?'📸 Event album':p.media.label):'✍️ Team post';
-    const txt=(p.text||'').replace(/#\w[\w-]*/g,'').trim().slice(0,108);
-    return `<div class="tile"><div class="tmedia" style="background:${bg}">${lbl}</div>
-      <div class="tbody"><div class="tw">${txt}…</div><div class="tm">${p.name}<span class="src">↗ LinkedIn</span></div></div></div>`;
-  }).join('');
-  document.getElementById('rolesList').innerHTML=openRoles.map(r=>`<div class="role"><div><div class="rt">${r.t}</div><div class="rm">${r.m}</div></div><button class="rb" onclick="toast('Application form (demo)')">Apply</button></div>`).join('');
-}
-function joinTalent(e){e.preventDefault();e.target.reset();toast("🎉 You're in! We'll be in touch.");return false;}
 
 /* ---------------- COMMERCE / STORE ---------------- */
 const products=[
@@ -1195,7 +1132,6 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(t.dataset.view).classList.add('active');
   if(t.dataset.view==='app')refreshBell();
   if(t.dataset.view==='admin')renderPromo();
-  if(t.dataset.view==='public')renderPublic();
 });
 
 /* ---------------- TOAST ---------------- */
@@ -1203,7 +1139,7 @@ let toastTimer;
 function toast(msg){const t=document.getElementById('toast');t.innerHTML=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2100);}
 
 /* init */
-buildSwatches();applyCompose();renderFeed();renderUsers();refreshBell();renderPromo();renderPublic();refreshCartBadges();
+buildSwatches();applyCompose();renderFeed();renderUsers();refreshBell();renderPromo();refreshCartBadges();
 </script>
 </body>
 </html>
