@@ -546,12 +546,6 @@
           <button class="sendbtn" id="ntfSend">Send to feed</button>
           <div style="font-size:11px;color:var(--mut);margin-top:10px;line-height:1.5">Tip: switch to the <b>App Demo</b> tab and open the bell 🔔 to see it arrive. Mandatory alerts also show a red banner until acknowledged.</div>
           </div>
-
-          <div class="panelbox" style="margin-top:16px">
-            <h4>🌟 Spotlight &amp; Promote to Social</h4>
-            <div class="ps">Push your best employee posts to Zarthi's LinkedIn / Instagram. Requires employee consent before anything goes public.</div>
-            <div id="promoList"></div>
-          </div>
         </div>
       </div>
     </div>
@@ -699,7 +693,7 @@ const inits = (n)=>n.split(' ').map(x=>x[0]).slice(0,2).join('');
 const posts = [
   {id:1,name:'Priya Nair',role:'SEO Lead · Marketing',dept:['marketing','seo'],deptlbl:'SEO',color:'company',time:'2h',
    text:'🎉 Our pillar page just hit Page 1 for "application modernization India" — 3 months of content + technical fixes paying off! #seo #content',
-   media:{type:'photo',label:'📈 Ranking screenshot',bg:'linear-gradient(135deg,#113258,#337D38)'},likes:42,kudos:12,comments:8,reshares:9,promoted:true,spotlight:true},
+   media:{type:'photo',label:'📈 Ranking screenshot',bg:'linear-gradient(135deg,#113258,#337D38)'},likes:42,kudos:12,comments:8,reshares:9},
   {id:2,name:'Aman Gupta',role:'Paid Media · Marketing',dept:['marketing','paid'],deptlbl:'Paid Media',color:'marketing',time:'4h',
    text:'New Meta creative test → CPL down 31% this week. Carousel beat single-image again. Swipe for the breakdown 👇 #ppc #roas',
    media:{type:'carousel',label:'🎠 3 creatives',bg:'linear-gradient(135deg,#1d4e89,#113258)'},likes:28,kudos:6,comments:5},
@@ -708,7 +702,7 @@ const posts = [
    media:{type:'video',label:'🎬 1:12 demo',bg:'linear-gradient(135deg,#033732,#337D38)'},likes:35,kudos:9,comments:4},
   {id:4,name:'Sneha Iyer',role:'Account Exec · Sales',dept:['sales'],deptlbl:'Sales',color:'sales',time:'6h',
    text:'CLOSED WON 🏆 ₹18L annual deal with a logistics client. Huge thanks to the SEO team for the inbound lead! #closed-won #pipeline',
-   banner:{bg:'linear-gradient(135deg,#337D38,#033732)',color:'#fff',font:"Impact,sans-serif"},likes:67,kudos:23,comments:14,reshares:18,promoted:true,spotlight:true},
+   banner:{bg:'linear-gradient(135deg,#337D38,#033732)',color:'#fff',font:"Impact,sans-serif"},likes:67,kudos:23,comments:14,reshares:18},
   {id:5,name:'Zarthi People Team',role:'HR · Company-wide',dept:['company'],deptlbl:'Announcement',color:'company',time:'8h',
    text:'📰 The June Pulse Newsletter is live — team wins, new joiners, and the Q3 R&R rewards. Don\'t miss it! #announcement #rnr',
    media:{type:'gif',label:'GIF 🎉 celebration',bg:'linear-gradient(135deg,#FFB42A,#E89F12)'},likes:54,kudos:4,comments:9},
@@ -717,7 +711,7 @@ const posts = [
    media:{type:'photo',label:'📱 Reel analytics',bg:'linear-gradient(135deg,#2f6fb0,#113258)'},likes:31,kudos:7,comments:6},
   {id:7,name:'Zarthi Culture Club',role:'Events · Company-wide',dept:['company'],deptlbl:'Event',color:'company',time:'1d',
    text:'📸 Throwback to our Annual Offsite in Goa — strategy by day, bonfire by night! Full album inside. #event #lifeatzarthi',
-   media:{type:'album',images:['linear-gradient(135deg,#113258,#1d4e89)','linear-gradient(135deg,#337D38,#033732)','linear-gradient(135deg,#FFB42A,#E89F12)','linear-gradient(135deg,#C7413A,#8f2f2a)'],more:8},likes:88,kudos:15,comments:22,reshares:12,promoted:true,spotlight:true}
+   media:{type:'album',images:['linear-gradient(135deg,#113258,#1d4e89)','linear-gradient(135deg,#337D38,#033732)','linear-gradient(135deg,#FFB42A,#E89F12)','linear-gradient(135deg,#C7413A,#8f2f2a)'],more:8},likes:88,kudos:15,comments:22,reshares:12}
 ];
 
 const leaderboard = [
@@ -793,7 +787,7 @@ function postInner(p){
     <div class="post-h">
       <div class="av" style="background:${av(p.name)}">${inits(p.name)}</div>
       <div>
-        <div class="nm">${p.name} ${p.spotlight?'<span class="spot">★ SPOTLIGHT</span>':''}</div>
+        <div class="nm">${p.name}</div>
         <div class="mt">${p.role} · ${p.time} <span class="pill" style="background:${bg};color:${col}">${p.deptlbl}</span></div>
       </div>
     </div>
@@ -808,7 +802,7 @@ function postCard(p){
     return c;
   }
   c.innerHTML=postInner(p)+`
-    <div class="post-meta">❤️ ${p.likes+(liked?1:0)} · ⭐ ${p.kudos+(kud?1:0)} kudos · 💬 ${p.comments} · 🔁 ${(p.reshares||0)+(rsh?1:0)}${sav?' · 🔖 saved':''}${p.promoted?' · 🌐 on Zarthi social':''}</div>
+    <div class="post-meta">❤️ ${p.likes+(liked?1:0)} · ⭐ ${p.kudos+(kud?1:0)} kudos · 💬 ${p.comments} · 🔁 ${(p.reshares||0)+(rsh?1:0)}${sav?' · 🔖 saved':''}</div>
     <div class="actions">
       <button class="act ${liked?'liked':''}" data-like="${p.id}">${liked?'❤️':'🤍'} Like</button>
       <button class="act ${kud?'kudos':''}" data-kudos="${p.id}">⭐ Kudos</button>
@@ -1053,32 +1047,6 @@ document.getElementById('ntfSend').onclick=()=>{
   toast((ntfType==='mandatory'?'⚠️ Mandatory':'🔔 Normal')+' notification sent to feed');
 };
 
-/* ---------------- SPOTLIGHT / PROMOTE TO SOCIAL ---------------- */
-function eng(p){return (p.likes||0)+(p.kudos||0)+(p.reshares||0);}
-function renderPromo(){
-  const box=document.getElementById('promoList');
-  const top=posts.filter(p=>!p.reshareOf).sort((a,b)=>eng(b)-eng(a)).slice(0,5);
-  box.innerHTML=top.map(p=>{
-    const snip=(p.text||'').slice(0,68)+((p.text||'').length>68?'…':'');
-    if(p.promoted) return `<div class="promo-post done"><div class="pp-txt">${snip}</div><div class="promo-live">✓ Live on Zarthi LinkedIn + Instagram</div></div>`;
-    return `<div class="promo-post">
-        <div class="pp-txt">${snip}</div>
-        <div class="eng">❤️ ${p.likes} · ⭐ ${p.kudos} · 🔁 ${p.reshares||0} engagement</div>
-        <label class="consent"><input type="checkbox" data-consent="${p.id}"/> ${p.name.split(' ')[0]} consents to share this externally</label>
-        <button class="promobtn" data-promote="${p.id}" disabled>🌐 Promote to social</button>
-      </div>`;
-  }).join('');
-}
-document.getElementById('promoList').addEventListener('change',e=>{
-  const c=e.target.closest('[data-consent]'); if(!c)return;
-  c.closest('.promo-post').querySelector('[data-promote]').disabled=!c.checked;
-});
-document.getElementById('promoList').addEventListener('click',e=>{
-  const b=e.target.closest('[data-promote]'); if(!b||b.disabled)return;
-  const p=posts.find(x=>x.id===+b.dataset.promote); p.promoted=true;p.spotlight=true;
-  renderPromo();renderFeed();toast('🌐 Scheduled to Zarthi LinkedIn + Instagram');
-});
-
 /* ---------------- COMMERCE / STORE ---------------- */
 const products=[
   {id:'tshirt',n:'Zarthi T-Shirt',p:699,e:'👕',bg:'linear-gradient(135deg,#113258,#1d4e89)'},
@@ -1131,7 +1099,6 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(t.dataset.view).classList.add('active');
   if(t.dataset.view==='app')refreshBell();
-  if(t.dataset.view==='admin')renderPromo();
 });
 
 /* ---------------- TOAST ---------------- */
@@ -1139,7 +1106,7 @@ let toastTimer;
 function toast(msg){const t=document.getElementById('toast');t.innerHTML=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2100);}
 
 /* init */
-buildSwatches();applyCompose();renderFeed();renderUsers();refreshBell();renderPromo();refreshCartBadges();
+buildSwatches();applyCompose();renderFeed();renderUsers();refreshBell();refreshCartBadges();
 </script>
 </body>
 </html>
